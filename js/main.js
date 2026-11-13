@@ -692,8 +692,8 @@ function initStreetView() {
   const box = $('#streetView'), frame = $('#svFrame'); if (!box) return;
   const { lat, lng } = CONFIG.coordenadas;
   const urls = {
-    street: `https://maps.google.com/maps?layer=c&cbll=${lat},${lng}&cbp=12,250,0,0,0&output=svembed`,
-    map: `https://maps.google.com/maps?q=${encodeURIComponent(CONFIG.mapsBusca)}&z=17&output=embed`
+    street: `https://www.google.com/maps/embed?pb=!6m7!1m6!2m2!1d${lat}!2d${lng}!3f250!4f0!5f0.8`,
+    map: `https://maps.google.com/maps?q=${encodeURIComponent(CONFIG.mapsBusca)}&z=17&hl=pt-BR&output=embed`
   };
   $$('.js-sv-open').forEach(a => { a.href = `https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=${lat},${lng}`; });
   let mode = 'street', loaded = false;
