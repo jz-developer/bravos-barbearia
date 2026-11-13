@@ -90,7 +90,7 @@ const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
 const lerp = (a, b, t) => a + (b - a) * t;
 const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
 const pad = n => String(n).padStart(2, '0');
-const money = v => 'R$ ' + v.toLocaleString('pt-BR');
+const money = v => 'R$ ' + Number(v).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 const mq = q => window.matchMedia(q).matches;
 const FINE = mq('(hover:hover) and (pointer:fine)');
 const REDUCED = mq('(prefers-reduced-motion: reduce)');
@@ -158,7 +158,7 @@ function renderPrices() {
         <p class="pcard__desc">${esc(s.desc)}</p>
         <span class="pcard__meta">${icon}${durTxt(s.dur)}</span>
         <div class="pcard__foot">
-          <div class="price">${s.de ? `<s>${money(s.de)}</s>` : ''}<strong><small>R$</small>${s.preco}</strong></div>
+          <div class="price">${s.de ? `<s>${money(s.de)}</s>` : ''}<strong><small>R$</small>${s.preco}<sup>,00</sup></strong></div>
           <button class="add" type="button" data-add="${esc(s.id)}" aria-label="Adicionar ${esc(s.nome)} ao pedido">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Adicionar
           </button>
@@ -355,12 +355,22 @@ function buildMessage() {
   t += `\n\nPode confirmar pra mim?`;
   return t;
 }
+function renderSummary() {
+  const d = booking.days[booking.dayIndex], list = cart.list();
+  const servicos = list.length ? list.map(({ s, q }) => `${q > 1 ? q + 'x ' : ''}${esc(s.nome)}`).join('<br>') : '<span class="is-empty">nenhum ainda</span>';
+  $('#summary').innerHTML = `
+    <dt>Serviços</dt><dd>${servicos}</dd>
+    <dt>Dia</dt><dd>${d && booking.slot ? esc(d.texto.replace(/ \(.*\)/, '')) : '<span class="is-empty">escolha o dia</span>'}</dd>
+    <dt>Horário</dt><dd>${booking.slot ? esc(booking.slot) : '<span class="is-empty">escolha o horário</span>'}</dd>
+    <dt>Duração</dt><dd>${list.length ? '≈ ' + durTxt(cart.minutes()) : '—'}</dd>
+    <div class="summary__total"><span>Total</span><strong>${money(cart.total())}</strong></div>`;
+}
 function updateMessage() {
   const ok = cart.count() > 0 && !!booking.slot;
   const btn = $('#sendBtn');
   btn.setAttribute('aria-disabled', String(!ok));
   btn.href = ok ? waLink(buildMessage()) : '#';
-  $('#msgPreview').textContent = buildMessage().replace(/\*/g, '');
+  renderSummary();
   $('#sendHint').textContent = !cart.count() ? 'Adicione um serviço para continuar.' : !booking.slot ? 'Agora escolha um horário.' : 'Tudo certo! É só enviar.';
 }
 
@@ -394,10 +404,13 @@ function renderHours() {
   updateStatus();
 }
 function updateStatus() {
+  const mini = $('.js-open-mini');
   const now = new Date(), h = CONFIG.horarios[now.getDay()], el = $('#openStatus');
   const mins = now.getHours() * 60 + now.getMinutes();
   el.classList.remove('is-open', 'is-closed');
-  if (h && mins >= h[0] * 60 && mins < h[1] * 60) { el.classList.add('is-open'); el.lastElementChild.textContent = `Aberto agora · fecha às ${h[1]}h`; return; }
+  const isOpen = !!(h && mins >= h[0] * 60 && mins < h[1] * 60);
+  if (mini) { mini.textContent = isOpen ? `Aberto agora até ${h[1]}h` : 'Fechado agora'; mini.classList.toggle('is-closed', !isOpen); }
+  if (isOpen) { el.classList.add('is-open'); el.lastElementChild.textContent = `Aberto agora · fecha às ${h[1]}h`; return; }
   el.classList.add('is-closed');
   for (let i = 0; i < 8; i++) {
     const d = new Date(now); d.setDate(now.getDate() + i);
@@ -414,8 +427,9 @@ function initStories() {
     <article class="story" data-i="${i}">
       <div class="story__bg"><img src="${esc(t.img)}" alt="" loading="lazy"></div>
       <div class="story__bars">${list.map(() => '<i><b></b></i>').join('')}</div>
+      <span class="story__mark" aria-hidden="true">“</span>
       <blockquote class="story__quote">${esc(t.frase)}</blockquote>
-      <div class="story__name">${esc(t.nome)} <span>· Google</span></div>
+      <div class="story__name"><i>G</i>${esc(t.nome)} <span>· avaliação no Google</span></div>
     </article>`).join('');
   const cards = $$('.story', stage); let active = 0, elapsed = 0, last = performance.now(), paused = false, visible = false;
   const DUR = 4800;
@@ -475,6 +489,20 @@ function initWall() {
 /* =========================================================
    EFEITOS
    ========================================================= */
+function splitWave() {
+  $$('.wave').forEach(el => {
+    const txt = el.textContent.trim(); el.textContent = ''; let d = 0;
+    txt.split(' ').forEach((word, wi) => {
+      if (wi) el.appendChild(document.createTextNode(' '));
+      const w = document.createElement('span'); w.className = 'word';
+      word.split('').forEach(ch => {
+        const sp = document.createElement('span'); sp.className = 'ch';
+        sp.textContent = ch; sp.style.setProperty('--d', d++); w.appendChild(sp);
+      });
+      el.appendChild(w);
+    });
+  });
+}
 function splitText() {
   $$('.split').forEach(el => {
     let i = 0;
@@ -525,14 +553,6 @@ function countUp(el, dec) {
 function heroIn() {
   $('.hero__title').classList.add('is-in');
   $$('.hero .reveal').forEach((el, i) => setTimeout(() => el.classList.add('is-in'), 350 + i * 140));
-  // palavras que giram
-  const words = $$('#heroWords b'); let w = 0; words[0].classList.add('is-on');
-  setInterval(() => {
-    if (document.hidden) return;
-    words[w].classList.remove('is-on'); words[w].classList.add('is-out');
-    const prev = words[w]; setTimeout(() => prev.classList.remove('is-out'), 800);
-    w = (w + 1) % words.length; words[w].classList.add('is-on');
-  }, 2400);
 }
 function upgradeImages() {
   const run = () => $$('img[data-hd]').forEach(img => {
@@ -699,11 +719,12 @@ function initStreetView() {
   let mode = 'street', loaded = false;
   const load = () => { box.classList.remove('is-loaded'); frame.src = urls[mode]; loaded = true; };
   frame.addEventListener('load', () => box.classList.add('is-loaded'));
-  $$('.sv__tab', box).forEach(t => t.addEventListener('click', () => {
-    mode = t.dataset.sv;
-    $$('.sv__tab', box).forEach(x => { x.classList.toggle('is-active', x === t); x.setAttribute('aria-selected', x === t); });
-    load();
-  }));
+  // escudo: a rolagem da página não vira zoom no Street View
+  const live = v => box.classList.toggle('is-live', v);
+  $('#svShield').addEventListener('click', () => live(true));
+  $('#svLock').addEventListener('click', () => live(false));
+  box.addEventListener('mouseleave', () => { live(false); document.body.classList.remove('over-sv'); });
+  box.addEventListener('mouseenter', () => document.body.classList.add('over-sv'));
   // só carrega quando a pessoa chega perto (deixa o site leve)
   const io = new IntersectionObserver(([en]) => { if (en.isIntersecting && !loaded) { load(); io.disconnect(); } }, { rootMargin: '400px 0px' });
   io.observe(box);
@@ -711,7 +732,7 @@ function initStreetView() {
 
 /* ---------- REC ---------- */
 function initRec() {
-  const el = $('#recTimer'); const t0 = Date.now() - 1000 * 60 * 47;
+  const el = $('#recTimer'); if (!el) return; const t0 = Date.now() - 1000 * 60 * 47;
   const f = () => { const s = Math.floor((Date.now() - t0) / 1000); el.textContent = `${pad(Math.floor(s / 3600))}:${pad(Math.floor(s / 60) % 60)}:${pad(s % 60)}`; };
   f(); setInterval(f, 1000);
 }
@@ -808,7 +829,7 @@ function toast(t) {
 function init() {
   fillBasics(); renderPrices(); renderHours(); initStories(); initWall();
   cart.load(); initCartEvents(); initBooking(); renderCart();
-  splitText(); initReveals(); refreshWa(); upgradeImages();
+  splitText(); splitWave(); initReveals(); refreshWa(); upgradeImages();
   initSmooth(); initCursor(); initRipple(); initMagnetic(); initTilt(); initCardGlow();
   initSpotlight(); initLightbox(); initMenu(); initRec(); initStreetView(); initScrollFx();
   preloader(heroIn);

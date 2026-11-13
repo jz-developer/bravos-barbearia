@@ -15,7 +15,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23c8161d'/%3E%3Ctext x='32' y='45' font-family='Arial Black,Arial' font-weight='900' font-size='38' text-anchor='middle' fill='%23fff'%3EB%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="img/cadeira.jpg">
 <link rel="stylesheet" href="css/style.css">
 </head>
@@ -24,7 +24,8 @@
 <!-- ============ PRELOADER ============ -->
 <div class="preloader" id="preloader" aria-hidden="true">
   <div class="preloader__inner">
-    <div class="preloader__logo"><span>B</span><span>R</span><span>A</span><span>V</span><span>O</span><span>S</span></div>
+    <div class="preloader__logo neon-word"><span>B</span><span>R</span><span>A</span><span>V</span><span>O</span><span>S</span></div>
+    <div class="preloader__sub">Barbearia · Rio Branco</div>
     <div class="preloader__bar"><i id="preloaderBar"></i></div>
   </div>
 </div>
@@ -40,7 +41,7 @@
   <div class="header__inner">
     <a href="#inicio" class="logo" aria-label="Bravos Barbearia — início">
       <span class="logo__mark">BRAVOS</span>
-      <span class="logo__sub">Barbearia</span>
+      <span class="logo__sub">barbearia</span>
     </a>
     <nav class="nav" aria-label="Principal">
       <a href="#servicos" class="nav__link"><span data-text="Serviços">Serviços</span></a>
@@ -85,8 +86,7 @@
     <div class="hero__shade"></div>
     <span class="corner corner--tl"></span><span class="corner corner--tr"></span>
     <span class="corner corner--bl"></span><span class="corner corner--br"></span>
-    <div class="hero__hud hero__hud--tl"><span class="rec"><i></i>REC</span><span id="recTimer">00:00:00</span></div>
-    <div class="hero__hud hero__hud--tr js-city"></div>
+
 
     <div class="hero__content">
       <a href="#avaliacoes" class="chip reveal" aria-label="Nota 4,9 com 166 avaliações no Google">
@@ -94,20 +94,18 @@
       </a>
       <h1 class="hero__title">
         <span class="line"><span>Estilo</span></span>
-        <span class="line"><span><em>afiado,</em></span></span>
+        <span class="line"><span><em class="neon-in">afiado,</em></span></span>
         <span class="line"><span>sem fila.</span></span>
       </h1>
-      <p class="hero__lead reveal">Corte, barba e pigmentação com hora marcada no Rio Branco. Você chega, toma um café e senta na cadeira na hora certa.</p>
+      <p class="hero__lead reveal">Corte, barba e pigmentação com hora marcada no Rio Branco, em Porto Alegre. Ambiente climatizado, café passado e bebida gelada enquanto você espera.</p>
+      <p class="hero__info reveal"><span class="js-open-mini"></span><span>R. Paraguai, 33</span></p>
       <div class="hero__ctas reveal">
         <a href="#servicos" class="btn btn--red magnetic"><span class="btn__label">Montar meu horário</span>
           <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         <a href="#avaliacoes" class="link-arrow">Ver avaliações <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
       </div>
     </div>
-    <div class="hero__rotator reveal" aria-hidden="true">
-      <span class="hero__rotator-label">Hoje tem</span>
-      <span class="hero__rotator-words" id="heroWords"><b>Corte navalhado</b><b>Barba na toalha</b><b>Pigmentação</b><b>Pai e filho</b></span>
-    </div>
+
     <div class="hero__scroll" aria-hidden="true"><i></i></div>
   </div>
 </section>
@@ -130,13 +128,6 @@
       </div>
       <p class="section-head__aside reveal">Adicione os serviços ao carrinho, escolha o dia e o horário e envie tudo pronto para o nosso WhatsApp. Sem cadastro, sem senha.</p>
     </div>
-    <div class="steps reveal" aria-label="Como funciona">
-      <div class="step"><b>1</b><span>Escolha os serviços</span></div>
-      <i></i>
-      <div class="step"><b>2</b><span>Escolha dia e horário</span></div>
-      <i></i>
-      <div class="step"><b>3</b><span>Envie no WhatsApp</span></div>
-    </div>
     <div class="price-grid" id="priceGrid"><!-- JS --></div>
     <p class="services__note reveal">Valores de referência. Cortes muito longos ou com desenho podem ter ajuste, combinado antes de começar.</p>
   </div>
@@ -156,7 +147,7 @@
     <h2 class="h2 h2--xl split">O detalhe faz <em>a diferença</em></h2>
     <p class="spotlight__lead reveal">Toalha quente, navalha afiada e contorno feito na mão. É o tipo de cuidado que faz o cliente voltar.</p>
     <div class="hero__ctas reveal">
-      <button class="btn btn--light magnetic js-add" data-id="barba" type="button"><span class="btn__label">Adicionar barba · R$ 40</span></button>
+      <button class="btn btn--light magnetic js-add" data-id="barba" type="button"><span class="btn__label">Adicionar barba · R$ 40,00</span></button>
     </div>
   </div>
 </section>
@@ -285,16 +276,14 @@
       </div>
     </div>
     <div class="sv" id="streetView">
-      <div class="sv__tabs" role="tablist" aria-label="Visualização">
-        <button class="sv__tab is-active" type="button" role="tab" aria-selected="true" data-sv="street">Street View</button>
-        <button class="sv__tab" type="button" role="tab" aria-selected="false" data-sv="map">Mapa</button>
-      </div>
       <div class="sv__frame">
         <iframe id="svFrame" title="Street View da frente da Bravos Barbearia" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
         <div class="sv__loading" id="svLoading"><span></span>Carregando a rua…</div>
+        <button class="sv__shield" id="svShield" type="button"><span>Toque para andar pela rua</span></button>
+        <button class="sv__lock" id="svLock" type="button" aria-label="Travar o Street View">Concluir</button>
       </div>
       <div class="sv__foot">
-        <span>Arraste para olhar em volta. Use os dedos ou o mouse para dar zoom.</span>
+        <span>Em frente à Bravos, na R. Paraguai, 33.</span>
         <a class="js-sv-open" href="#" target="_blank" rel="noopener noreferrer">Abrir no Google <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
       </div>
     </div>
@@ -314,7 +303,7 @@
 
     <div class="booking__grid">
       <div class="panel">
-        <div class="panel__head"><span class="panel__num">1</span><h3>Seu pedido</h3></div>
+        <div class="panel__head"><span class="panel__num">01</span><h3>Seu pedido</h3></div>
         <ul class="order" id="orderList"></ul>
         <div class="order__total" id="orderTotal"></div>
         <label class="field">
@@ -324,8 +313,8 @@
       </div>
 
       <div class="panel">
-        <div class="panel__head"><span class="panel__num">2</span><h3>Serviço, dia e horário</h3></div>
-        <span class="picker__label">Toque para incluir ou tirar</span>
+        <div class="panel__head"><span class="panel__num">02</span><h3>Quando?</h3></div>
+        <span class="picker__label">Serviços</span>
         <div class="picker" id="picker" role="group" aria-label="Serviços"></div>
         <span class="picker__label">Dia</span>
         <div class="days" id="bookingDays" role="tablist" aria-label="Dias disponíveis"></div>
@@ -335,13 +324,16 @@
       </div>
 
       <div class="panel panel--send">
-        <div class="panel__head"><span class="panel__num">3</span><h3>Enviar</h3></div>
-        <div class="preview">
-          <div class="preview__bar"><span class="preview__avatar">B</span><div><strong>Bravos Barbearia</strong><small>WhatsApp</small></div></div>
-          <div class="preview__bubble" id="msgPreview"></div>
-        </div>
+        <div class="panel__head"><span class="panel__num">03</span><h3>Resumo</h3></div>
+        <dl class="summary" id="summary"></dl>
+        <ul class="good">
+          <li><b>Pagamento</b> feito na barbearia, depois do serviço.</li>
+          <li><b>Chegue 5 min antes</b> e aproveite um café.</li>
+          <li><b>Precisa remarcar?</b> É só avisar pelo WhatsApp.</li>
+          <li><b>Crianças</b> são bem-vindas.</li>
+        </ul>
         <a class="btn btn--red btn--block magnetic" id="sendBtn" href="#" target="_blank" rel="noopener noreferrer" aria-disabled="true">
-          <svg class="wa-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+          <svg class="wa-line" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.6 19.3A8.8 8.8 0 1 0 4.6 16.1L3.3 20.7Z"/><path d="M9.1 7.6c.3-.4.8-.5 1.2-.2l1 1.2c.3.4.2.9-.1 1.2l-.6.5c.5 1.2 1.4 2.1 2.6 2.6l.5-.6c.3-.3.8-.4 1.2-.1l1.2 1c.3.4.2.9-.2 1.2-.8.7-1.9.9-2.9.5a8 8 0 0 1-4.4-4.4c-.4-1-.2-2.1.5-2.9Z"/></svg>
           <span class="btn__label" id="sendLabel">Enviar no WhatsApp</span>
         </a>
         <p class="send__hint" id="sendHint"></p>
@@ -372,8 +364,8 @@
 <section class="final-cta">
   <a class="final-cta__link" href="#servicos">
     <span class="final-cta__small">Pronto para o próximo corte?</span>
-    <span class="final-cta__big"><span class="final-cta__line">Bora ficar</span><span class="final-cta__line final-cta__line--outline">na régua</span></span>
-    <span class="final-cta__go">Montar meu horário <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span>
+    <span class="final-cta__big"><span class="final-cta__line wave">Bora ficar</span><span class="final-cta__line final-cta__line--neon wave">na régua</span></span>
+    <span class="final-cta__go"><span class="final-cta__go-text">Montar meu horário</span><span class="final-cta__go-ico"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span></span>
   </a>
 </section>
 
@@ -393,13 +385,16 @@
       <div class="footer__logo">BRAVOS</div>
       <p class="footer__copy">© <span id="year"></span> Bravos Barbearia. Todos os direitos reservados.</p>
     </div>
-    <a href="#inicio" class="to-top magnetic" aria-label="Voltar ao topo">
-      <svg viewBox="0 0 120 120" aria-hidden="true"><defs><path id="topCircle" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"/></defs>
-        <text><textPath href="#topCircle">VOLTAR AO TOPO · VOLTAR AO TOPO · </textPath></text></svg>
-      <span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20V5M6 11l6-6 6 6"/></svg></span>
-    </a>
+    <a href="#inicio" class="to-top magnetic" aria-label="Voltar ao topo"><span class="to-top__ico"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20V5M6 11l6-6 6 6"/></svg></span><span class="to-top__txt">Voltar ao topo</span></a>
   </div>
-  <div class="footer__giant" aria-hidden="true">BRAVOS</div>
+  <div class="footer__giant" aria-hidden="true">
+    <svg viewBox="0 0 1000 230" preserveAspectRatio="xMidYMid meet">
+      <defs><filter id="neonGlow" x="-20%" y="-40%" width="140%" height="180%"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+      <text class="giant__base" x="500" y="205" text-anchor="middle">BRAVOS</text>
+      <text class="giant__run" x="500" y="205" text-anchor="middle" filter="url(#neonGlow)">BRAVOS</text>
+      <text class="giant__run giant__run--2" x="500" y="205" text-anchor="middle" filter="url(#neonGlow)">BRAVOS</text>
+    </svg>
+  </div>
 </footer>
 
 <!-- ============ CARRINHO ============ -->
@@ -424,7 +419,7 @@
 
 <!-- WhatsApp -->
 <a class="wa-float js-wa" data-wa="geral" href="#" target="_blank" rel="noopener noreferrer" aria-label="Falar com a Bravos no WhatsApp">
-  <svg class="wa-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+  <svg class="wa-neon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.6 19.3A8.8 8.8 0 1 0 4.6 16.1L3.3 20.7Z"/><path d="M9.1 7.6c.3-.4.8-.5 1.2-.2l1 1.2c.3.4.2.9-.1 1.2l-.6.5c.5 1.2 1.4 2.1 2.6 2.6l.5-.6c.3-.3.8-.4 1.2-.1l1.2 1c.3.4.2.9-.2 1.2-.8.7-1.9.9-2.9.5a8 8 0 0 1-4.4-4.4c-.4-1-.2-2.1.5-2.9Z"/></svg>
 </a>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
