@@ -15,7 +15,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23c8161d'/%3E%3Ctext x='32' y='45' font-family='Arial Black,Arial' font-weight='900' font-size='38' text-anchor='middle' fill='%23fff'%3EB%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&family=DM+Serif+Display&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="img/cadeira.jpg">
 <link rel="stylesheet" href="css/style.css">
 </head>
@@ -264,10 +264,10 @@
 <section class="location section" id="localizacao">
   <div class="container location__grid">
     <div>
-      <span class="eyebrow reveal">Localização</span>
-      <h2 class="h2 split">Como <em>chegar</em></h2>
+      <span class="eyebrow-line reveal">Localização</span>
+      <h2 class="visit-title" aria-label="Visite a Bravos"><span class="visit-word">Visite</span> <span class="visit-word">a</span> <span class="visit-word">Bravos</span></h2>
       <p class="location__addr reveal js-address"></p>
-      <p class="location__addr-sub reveal js-city"></p>
+      <p class="location__addr-sub reveal">Rio Branco · Porto Alegre - RS</p>
       <div class="status reveal" id="openStatus"><i></i><span>Verificando horário…</span></div>
       <ul class="hours" id="hoursList"></ul>
       <div class="hero__ctas">
@@ -282,7 +282,7 @@
         <g stroke="rgba(255,42,51,.75)" stroke-width="3" fill="none" stroke-dasharray="6 8" class="map__route"><path d="M20 380 C 90 330, 130 260, 200 200"/></g>
       </svg>
       <div class="map__pin"><span></span><b>Bravos</b></div>
-      <div class="map__label">R. Paraguai, 33 · Rio Branco <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+      <div class="map__label">Abrir no Google Maps ↗</div>
     </a>
   </div>
 </section>

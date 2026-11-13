@@ -489,6 +489,13 @@ function initWall() {
 /* =========================================================
    EFEITOS
    ========================================================= */
+function splitVisit() {
+  let i = 0;
+  $$('.visit-word').forEach(w => {
+    const t = w.textContent; w.textContent = '';
+    t.split('').forEach(ch => { const sp = document.createElement('span'); sp.className = 'vl'; sp.textContent = ch; sp.style.setProperty('--i', i++); w.appendChild(sp); });
+  });
+}
 function splitWave() {
   $$('.wave').forEach(el => {
     const txt = el.textContent.trim(); el.textContent = ''; let d = 0;
@@ -829,7 +836,7 @@ function toast(t) {
 function init() {
   fillBasics(); renderPrices(); renderHours(); initStories(); initWall();
   cart.load(); initCartEvents(); initBooking(); renderCart();
-  splitText(); splitWave(); initReveals(); refreshWa(); upgradeImages();
+  splitText(); splitWave(); splitVisit(); initReveals(); refreshWa(); upgradeImages();
   initSmooth(); initCursor(); initRipple(); initMagnetic(); initTilt(); initCardGlow();
   initSpotlight(); initLightbox(); initMenu(); initRec(); initStreetView(); initScrollFx();
   preloader(heroIn);
