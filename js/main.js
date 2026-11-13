@@ -12,6 +12,8 @@ const CONFIG = {
   cidade: 'Porto Alegre - RS',
   mapsBusca: 'Bravos Barbearia, R. Paraguai, 33 - Rio Branco, Porto Alegre - RS',
   avaliacoes: { nota: 4.9, total: 166 },
+  // ponto da calçada em frente à barbearia (Street View)
+  coordenadas: { lat: -30.03344, lng: -51.20256 },
   // 0 = domingo ... 6 = sábado. null = fechado
   horarios: { 0: null, 1: null, 2: [9, 20], 3: [9, 20], 4: [9, 20], 5: [9, 20], 6: [9, 18] },
   pausaAlmoco: [12],
@@ -108,6 +110,8 @@ const store = {
 };
 const durTxt = min => min < 60 ? `${min} min` : `${Math.floor(min / 60)}h${min % 60 ? pad(min % 60) : ''}`;
 const svcById = id => CONFIG.servicos.find(s => s.id === id);
+const I_MINUS = '<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12h12"/></svg>';
+const I_PLUS = '<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6v12M6 12h12"/></svg>';
 
 /* =========================================================
    CARRINHO
@@ -159,9 +163,9 @@ function renderPrices() {
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Adicionar
           </button>
           <div class="qty" role="group" aria-label="Quantidade de ${esc(s.nome)}">
-            <button type="button" data-dec="${esc(s.id)}" aria-label="Diminuir">−</button>
+            <button type="button" data-dec="${esc(s.id)}" aria-label="Diminuir">${I_MINUS}</button>
             <output data-q="${esc(s.id)}">1</output>
-            <button type="button" data-inc="${esc(s.id)}" aria-label="Aumentar">+</button>
+            <button type="button" data-inc="${esc(s.id)}" aria-label="Aumentar">${I_PLUS}</button>
           </div>
         </div>
       </div>
@@ -176,15 +180,22 @@ function orderItemsHTML(empty) {
       <span class="order__thumb"><img src="${esc(s.img)}" alt=""></span>
       <span class="order__info"><strong>${esc(s.nome)}</strong><small>${money(s.preco)} · ${durTxt(s.dur)}</small></span>
       <span class="qty" role="group" aria-label="Quantidade de ${esc(s.nome)}">
-        <button type="button" data-dec="${esc(s.id)}" aria-label="Diminuir">−</button>
+        <button type="button" data-dec="${esc(s.id)}" aria-label="Diminuir">${I_MINUS}</button>
         <output>${q}</output>
-        <button type="button" data-inc="${esc(s.id)}" aria-label="Aumentar">+</button>
+        <button type="button" data-inc="${esc(s.id)}" aria-label="Aumentar">${I_PLUS}</button>
       </span>
     </li>`).join('');
 }
 function totalHTML() {
   const n = cart.count();
   return `<span>${n} ${n === 1 ? 'item' : 'itens'}</span><div><strong>${money(cart.total())}</strong><small>≈ ${durTxt(cart.minutes() || 0)}</small></div>`;
+}
+function renderPicker() {
+  const check = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+  $('#picker').innerHTML = CONFIG.servicos.map(s => {
+    const on = cart.qty(s.id) > 0;
+    return `<button class="pick" type="button" data-toggle="${esc(s.id)}" aria-pressed="${on}"><i>${check}</i>${esc(s.nome)} <small>${money(s.preco)}</small></button>`;
+  }).join('');
 }
 function renderCart() {
   const n = cart.count();
@@ -209,6 +220,7 @@ function renderCart() {
   // barra do celular
   $('#cartBarCount').textContent = `${n} ${n === 1 ? 'item' : 'itens'}`;
   $('#cartBarTotal').textContent = money(cart.total());
+  renderPicker();
   updateCartBar();
   updateMessage();
 }
@@ -242,6 +254,7 @@ function initCartEvents() {
     const add = e.target.closest('[data-add]'); if (add) { cart.add(add.dataset.add, add); return; }
     const inc = e.target.closest('[data-inc]'); if (inc) { cart.add(inc.dataset.inc, null); return; }
     const dec = e.target.closest('[data-dec]'); if (dec) { cart.set(dec.dataset.dec, cart.qty(dec.dataset.dec) - 1); return; }
+    const tg = e.target.closest('[data-toggle]'); if (tg) { const id = tg.dataset.toggle; cart.qty(id) ? cart.set(id, 0) : cart.add(id, null); return; }
     const js = e.target.closest('.js-add'); if (js) { cart.add(js.dataset.id, js); return; }
   });
   // drawer
@@ -674,6 +687,28 @@ function initSmooth() {
   });
 }
 
+/* ---------- Street View ---------- */
+function initStreetView() {
+  const box = $('#streetView'), frame = $('#svFrame'); if (!box) return;
+  const { lat, lng } = CONFIG.coordenadas;
+  const urls = {
+    street: `https://maps.google.com/maps?layer=c&cbll=${lat},${lng}&cbp=12,250,0,0,0&output=svembed`,
+    map: `https://maps.google.com/maps?q=${encodeURIComponent(CONFIG.mapsBusca)}&z=17&output=embed`
+  };
+  $$('.js-sv-open').forEach(a => { a.href = `https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=${lat},${lng}`; });
+  let mode = 'street', loaded = false;
+  const load = () => { box.classList.remove('is-loaded'); frame.src = urls[mode]; loaded = true; };
+  frame.addEventListener('load', () => box.classList.add('is-loaded'));
+  $$('.sv__tab', box).forEach(t => t.addEventListener('click', () => {
+    mode = t.dataset.sv;
+    $$('.sv__tab', box).forEach(x => { x.classList.toggle('is-active', x === t); x.setAttribute('aria-selected', x === t); });
+    load();
+  }));
+  // só carrega quando a pessoa chega perto (deixa o site leve)
+  const io = new IntersectionObserver(([en]) => { if (en.isIntersecting && !loaded) { load(); io.disconnect(); } }, { rootMargin: '400px 0px' });
+  io.observe(box);
+}
+
 /* ---------- REC ---------- */
 function initRec() {
   const el = $('#recTimer'); const t0 = Date.now() - 1000 * 60 * 47;
@@ -775,7 +810,7 @@ function init() {
   cart.load(); initCartEvents(); initBooking(); renderCart();
   splitText(); initReveals(); refreshWa(); upgradeImages();
   initSmooth(); initCursor(); initRipple(); initMagnetic(); initTilt(); initCardGlow();
-  initSpotlight(); initLightbox(); initMenu(); initRec(); initScrollFx();
+  initSpotlight(); initLightbox(); initMenu(); initRec(); initStreetView(); initScrollFx();
   preloader(heroIn);
   setInterval(() => { refreshWa(); updateStatus(); }, 60000);
 }

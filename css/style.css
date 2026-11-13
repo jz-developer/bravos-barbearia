@@ -15,10 +15,10 @@
   --line:rgba(255,255,255,.1);
   --line-2:rgba(255,255,255,.18);
   --gold:#f5b301;
-  --display:'Archivo', 'Arial Narrow', system-ui, sans-serif;
-  --serif:'Instrument Serif', Georgia, serif;
-  --sans:'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --mono:'JetBrains Mono', ui-monospace, monospace;
+  --display:'Anton', Impact, 'Arial Narrow', sans-serif;
+  --serif:'Barlow', system-ui, sans-serif;
+  --sans:'Barlow', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mono:'Barlow Condensed', 'Arial Narrow', sans-serif;
   --ease:cubic-bezier(.22,1,.36,1);
   --ease-io:cubic-bezier(.77,0,.18,1);
   --spring:cubic-bezier(.34,1.56,.64,1);
@@ -640,4 +640,127 @@ body.cart-bar-on .wa-float{bottom:calc(94px + var(--safe-b))}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
   .reveal,.split .w>span,.hero__title .line>span{opacity:1!important;transform:none!important;filter:none!important}
+}
+
+
+/* =========================================================
+   V3 — identidade de barbearia (sem cara de template)
+   ========================================================= */
+/* Anton só tem um peso: nada de negrito falso */
+.preloader__logo,.logo__mark,.h2,.hero__title,.ticker span,.pcard__name,.price strong,.club__title,.band__solid,.band__outline,
+.stat strong,.rating__num,.panel__head h3,.order__total strong,.day b,.final-cta__big,.footer__logo,.footer__giant,.drawer__head h3,
+.mobile-menu__nav a,.map__pin b,.preview__avatar,.faq__item summary,.story__quote{font-weight:400!important;font-stretch:normal!important}
+.h2{text-transform:uppercase;letter-spacing:.005em;line-height:.95;font-size:clamp(42px,6.2vw,92px)}
+.h2--xl{font-size:clamp(48px,7.4vw,112px)}
+.h2 em,.hero__title em,.club__title em{font-family:inherit;font-style:normal;color:var(--red-2);font-size:1em;letter-spacing:inherit;text-transform:uppercase}
+.hero__title{letter-spacing:.005em;line-height:.9;font-size:clamp(64px,10vw,164px)}
+.logo__mark{letter-spacing:.06em;font-size:24px}
+.logo__sub{font-family:var(--mono);font-style:normal;font-weight:600;text-transform:uppercase;letter-spacing:.32em;font-size:10.5px;color:#bdbdc2;margin-top:3px}
+.eyebrow{font-weight:600;font-size:13px;letter-spacing:.22em}
+.eyebrow::before{width:22px;height:2px;background:var(--red-2)}
+.btn{border-radius:4px;font-weight:600;letter-spacing:.02em}
+.btn--sm{border-radius:4px}
+.add,.qty{border-radius:4px}
+.qty button{border-radius:3px}
+.chip{border-radius:4px}
+.cart-btn,.burger{border-radius:6px}
+.pcard,.wall__card,.panel,.order__item,.day,.slot,.field input,.sv,.preview{border-radius:8px}
+.hero__frame{border-radius:10px}
+.pcard__badge,.pcard__cat{border-radius:3px}
+.pcard__name{text-transform:uppercase;letter-spacing:.01em;font-size:clamp(26px,2.2vw,32px)}
+.price strong{letter-spacing:0;font-size:38px}
+.price strong small{font-family:var(--mono);font-weight:600}
+.pcard__meta{font-size:13px;letter-spacing:.06em;text-transform:uppercase}
+.pcard::before{display:none}
+.pcard:hover{box-shadow:0 24px 50px -28px rgba(0,0,0,.9)}
+.stat strong{letter-spacing:0}
+.rating{border-radius:8px}
+.rating__num{letter-spacing:0}
+.panel__head h3{text-transform:uppercase;letter-spacing:.02em;font-size:24px}
+.day b{font-size:24px}
+.day small{font-weight:600}
+.slot{font-weight:600;font-size:17px;letter-spacing:.04em}
+.order__total strong{letter-spacing:0;font-size:32px}
+.faq__item summary{font-family:var(--sans);font-weight:600!important;font-size:clamp(17px,1.5vw,20px)}
+.final-cta__big{letter-spacing:0}
+.footer__logo{letter-spacing:.06em}
+.footer__giant{letter-spacing:.02em;-webkit-text-stroke:1px rgba(255,255,255,.08)}
+.mobile-menu__nav a{text-transform:uppercase;letter-spacing:.01em}
+.hero__rotator-words{font-family:var(--mono);font-style:normal;font-weight:600;text-transform:uppercase;letter-spacing:.04em;min-width:340px}
+.hero__hud{font-weight:600;letter-spacing:.1em}
+
+/* ícones desenhados */
+.ico{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none;display:inline-block;vertical-align:middle}
+.ico--sc{width:22px;height:22px;stroke-width:1.8}
+.round-btn{display:grid;place-items:center}
+.round-btn .ico{width:20px;height:20px}
+.drawer__close,.lightbox__close{display:grid;place-items:center}
+.to-top span{display:grid;place-items:center}
+.to-top .ico{width:22px;height:22px}
+.cart-bar__go,.final-cta__go{display:inline-flex;align-items:center;gap:8px}
+.final-cta__go,.cart-bar__go{border-radius:4px}
+.stars{display:inline-flex;gap:2px;vertical-align:middle}
+.stars svg{width:13px;height:13px;fill:currentColor}
+.chip .stars{color:var(--gold)}
+.rating__stars .stars svg{width:22px;height:22px}
+.rating__stars{letter-spacing:0;line-height:0}
+.stat__star{display:inline-flex;margin-left:4px;color:var(--gold)}
+.stat__star svg{width:.55em;height:.55em;fill:currentColor}
+.wa-ico{width:20px;height:20px;fill:currentColor;flex:none}
+.wa-float .wa-ico{width:28px;height:28px;fill:#fff}
+
+/* ticker com listras de barbearia */
+.ticker{position:relative;margin-top:14px;padding:22px 0;border:0;background:#0d0d0f}
+.ticker::before,.ticker::after{content:"";position:absolute;left:0;right:0;height:6px;background:repeating-linear-gradient(-45deg,var(--red) 0 12px,#f2f2f2 12px 24px,#0d0d0f 24px 36px);background-size:51px 6px;animation:pole 1.6s linear infinite}
+.ticker::before{top:0}.ticker::after{bottom:0;animation-direction:reverse}
+@keyframes pole{to{background-position:51px 0}}
+.ticker span{font-size:26px;letter-spacing:.03em;color:#ece9e4}
+.ticker b{display:grid;place-items:center;color:var(--red-2)}
+.ticker__track{align-items:center;gap:28px}
+.band__star{display:grid;place-items:center;color:#fff}
+.band__star .ico{width:clamp(28px,3.4vw,52px);height:clamp(28px,3.4vw,52px);stroke-width:1.6}
+.band__solid,.band__outline{letter-spacing:.01em}
+.about__stamp span .ico{width:24px;height:24px;color:#fff}
+
+/* stories: frase de pôster */
+.story__quote{font-family:var(--display);font-style:normal;text-transform:uppercase;font-size:44px;line-height:1;letter-spacing:.01em}
+.wall__card blockquote{font-family:var(--sans);font-weight:500;font-size:18px;line-height:1.45}
+.wall__card--big blockquote{font-size:21px!important}
+.wall__card em{font-style:normal;font-weight:700}
+
+/* seletor de serviços na agenda */
+.picker__label{display:block;font-family:var(--mono);font-weight:600;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#bfaeac;margin:4px 0 10px}
+.picker{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.pick{display:inline-flex;align-items:center;gap:8px;padding:10px 12px;border-radius:6px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.04);font-weight:600;font-size:14px;transition:background .25s,border-color .25s,transform .35s var(--spring)}
+.pick small{font-family:var(--mono);font-weight:600;font-size:13px;color:#cbbcbb}
+.pick i{width:18px;height:18px;border-radius:3px;border:1.5px solid rgba(255,255,255,.4);display:grid;place-items:center;transition:background .25s,border-color .25s}
+.pick i svg{width:12px;height:12px;fill:none;stroke:#fff;stroke-width:3;opacity:0;transform:scale(.5);transition:opacity .2s,transform .3s var(--spring)}
+.pick:hover{border-color:rgba(255,255,255,.4)}
+.pick:active{transform:scale(.96)}
+.pick[aria-pressed="true"]{background:var(--red);border-color:var(--red-2)}
+.pick[aria-pressed="true"] small{color:#fff}
+.pick[aria-pressed="true"] i{background:#fff;border-color:#fff}
+.pick[aria-pressed="true"] i svg{stroke:var(--red);opacity:1;transform:none}
+
+/* Street View */
+.sv{position:relative;width:100%;justify-self:end;max-width:620px;border:1px solid var(--line);overflow:hidden;background:#111}
+.sv__tabs{position:absolute;z-index:3;top:12px;left:12px;display:flex;gap:4px;padding:4px;border-radius:6px;background:rgba(10,10,12,.82);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.sv__tab{padding:8px 12px;border-radius:4px;font-weight:600;font-size:13px;color:#cfcfd3;transition:background .25s,color .25s}
+.sv__tab.is-active{background:var(--red);color:#fff}
+.sv__frame{position:relative;aspect-ratio:4/3.4;background:#151517}
+.sv__frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:saturate(.9)}
+.sv__loading{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:#aaa;font-size:14px;transition:opacity .5s;pointer-events:none}
+.sv__loading span{width:28px;height:28px;border-radius:50%;border:2px solid rgba(255,255,255,.15);border-top-color:var(--red-2);animation:spin .9s linear infinite}
+.sv.is-loaded .sv__loading{opacity:0}
+.sv__foot{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 14px;font-size:13px;color:#a9a9ae;border-top:1px solid var(--line);flex-wrap:wrap}
+.sv__foot a{display:inline-flex;align-items:center;gap:6px;color:#fff;font-weight:600;white-space:nowrap}
+.sv__foot .ico{width:15px;height:15px}
+@media (max-width:1024px){.sv{justify-self:stretch;max-width:none}}
+@media (max-width:760px){
+  .h2{font-size:clamp(40px,12vw,60px)}
+  .hero__title{font-size:clamp(62px,19vw,96px)}
+  .story__quote{font-size:36px}
+  .sv__frame{aspect-ratio:1/1.05}
+  .ticker span{font-size:22px}
+  .pick{padding:9px 10px;font-size:13.5px}
 }

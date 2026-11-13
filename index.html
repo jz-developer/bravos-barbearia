@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://unsplash.com https://images.unsplash.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://unsplash.com https://images.unsplash.com; connect-src 'self'; frame-src https://www.google.com https://maps.google.com; object-src 'none'; base-uri 'self'; form-action 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Bravos Barbearia · Rio Branco, Porto Alegre</title>
 <meta name="description" content="Bravos Barbearia no Rio Branco, Porto Alegre. Corte, barba na toalha quente, pigmentação e combo pai e filho com hora marcada. Nota 4,9 no Google. Monte seu pedido e agende pelo WhatsApp.">
@@ -15,7 +15,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23c8161d'/%3E%3Ctext x='32' y='45' font-family='Arial Black,Arial' font-weight='900' font-size='38' text-anchor='middle' fill='%23fff'%3EB%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="img/cadeira.jpg">
 <link rel="stylesheet" href="css/style.css">
 </head>
@@ -90,7 +90,7 @@
 
     <div class="hero__content">
       <a href="#avaliacoes" class="chip reveal" aria-label="Nota 4,9 com 166 avaliações no Google">
-        <span class="chip__stars">★★★★★</span><strong>4,9</strong><span>· 166 avaliações no Google</span>
+        <span class="stars" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8z"/></svg></span><strong>4,9</strong><span>· 166 avaliações no Google</span>
       </a>
       <h1 class="hero__title">
         <span class="line"><span>Estilo</span></span>
@@ -115,8 +115,8 @@
 <!-- ============ TICKER ============ -->
 <div class="ticker" aria-hidden="true">
   <div class="ticker__track">
-    <span>Corte navalhado</span><b>✦</b><span>Barba na toalha quente</span><b>✦</b><span>Pigmentação</span><b>✦</b><span>Combo pai e filho</span><b>✦</b><span>Café passado</span><b>✦</b><span>Ambiente climatizado</span><b>✦</b>
-    <span>Corte navalhado</span><b>✦</b><span>Barba na toalha quente</span><b>✦</b><span>Pigmentação</span><b>✦</b><span>Combo pai e filho</span><b>✦</b><span>Café passado</span><b>✦</b><span>Ambiente climatizado</span><b>✦</b>
+    <span>Corte navalhado</span><b><svg class="ico ico--sc" viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.6 7.6 20 18M8.6 16.4 20 6"/></svg></b><span>Barba na toalha quente</span><b><svg class="ico ico--sc" viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.6 7.6 20 18M8.6 16.4 20 6"/></svg></b><span>Pigmentação</span><b><svg class="ico ico--sc" viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.6 7.6 20 18M8.6 16.4 20 6"/></svg></b><span>Combo pai e filho</span><b><svg class="ico ico--sc" viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.6 7.6 20 18M8.6 16.4 20 6"/></svg></b><span>Café passado</span><b><svg class="ico ico--sc" viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.6 7.6 20 18M8.6 16.4 20 6"/></svg></b><span>Ambiente climatizado</span><b><svg class="ico ico--sc" viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.6 7.6 20 18M8.6 16.4 20 6"/></svg></b>
+    <span>Corte navalhado</span><b><svg class="ico ico--sc" viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.6 7.6 20 18M8.6 16.4 20 6"/></svg></b><span>Barba na toalha quente</span><b><svg class="ico ico--sc" viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.6 7.6 20 18M8.6 16.4 20 6"/></svg></b><span>Pigmentação</span><b><svg class="ico ico--sc" viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.6 7.6 20 18M8.6 16.4 20 6"/></svg></b><span>Combo pai e filho</span><b><svg class="ico ico--sc" viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.6 7.6 20 18M8.6 16.4 20 6"/></svg></b><span>Café passado</span><b><svg class="ico ico--sc" viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.6 7.6 20 18M8.6 16.4 20 6"/></svg></b><span>Ambiente climatizado</span><b><svg class="ico ico--sc" viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.6 7.6 20 18M8.6 16.4 20 6"/></svg></b>
   </div>
 </div>
 
@@ -125,8 +125,8 @@
   <div class="container">
     <div class="section-head">
       <div>
-        <span class="eyebrow reveal">Serviços &amp; preços</span>
-        <h2 class="h2 split">Escolha o que vai <em>fazer hoje.</em></h2>
+        <span class="eyebrow reveal">Cardápio da casa</span>
+        <h2 class="h2 split">Serviços e <em>preços</em></h2>
       </div>
       <p class="section-head__aside reveal">Adicione os serviços ao carrinho, escolha o dia e o horário e envie tudo pronto para o nosso WhatsApp. Sem cadastro, sem senha.</p>
     </div>
@@ -153,7 +153,7 @@
   <span class="spotlight__hint">Passe o dedo ou o mouse na foto</span>
   <div class="container spotlight__content">
     <span class="eyebrow eyebrow--light reveal">Acabamento</span>
-    <h2 class="h2 h2--xl split">O detalhe que só aparece <em>de perto.</em></h2>
+    <h2 class="h2 h2--xl split">O detalhe faz <em>a diferença</em></h2>
     <p class="spotlight__lead reveal">Toalha quente, navalha afiada e contorno feito na mão. É o tipo de cuidado que faz o cliente voltar.</p>
     <div class="hero__ctas reveal">
       <button class="btn btn--light magnetic js-add" data-id="barba" type="button"><span class="btn__label">Adicionar barba · R$ 40</span></button>
@@ -195,7 +195,7 @@
 </section>
 
 <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Foto ampliada">
-  <button class="lightbox__close" id="lightboxClose" aria-label="Fechar">×</button>
+  <button class="lightbox__close" id="lightboxClose" aria-label="Fechar"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
   <img id="lightboxImg" src="data:," alt="">
   <p id="lightboxCap"></p>
 </div>
@@ -203,10 +203,10 @@
 <!-- ============ FAIXA ============ -->
 <section class="band" aria-label="Destaques">
   <div class="band__row" data-dir="1"><div class="band__track">
-    <span class="band__solid">Sem fila</span><span class="band__badge"><img src="img/tesoura.jpg" alt="" width="212" height="169" loading="lazy"></span><span class="band__outline">Hora marcada</span><span class="band__star">✦</span>
-    <span class="band__solid">Café passado</span><span class="band__badge"><img src="img/maquina.jpg" alt="" width="870" height="820" loading="lazy"></span><span class="band__outline">Climatizado</span><span class="band__star">✦</span>
-    <span class="band__solid">Sem fila</span><span class="band__badge"><img src="img/tesoura.jpg" alt="" width="212" height="169" loading="lazy"></span><span class="band__outline">Hora marcada</span><span class="band__star">✦</span>
-    <span class="band__solid">Café passado</span><span class="band__badge"><img src="img/maquina.jpg" alt="" width="870" height="820" loading="lazy"></span><span class="band__outline">Climatizado</span><span class="band__star">✦</span>
+    <span class="band__solid">Sem fila</span><span class="band__badge"><img src="img/tesoura.jpg" alt="" width="212" height="169" loading="lazy"></span><span class="band__outline">Hora marcada</span><span class="band__star"><svg class="ico ico--sc" viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.6 7.6 20 18M8.6 16.4 20 6"/></svg></span>
+    <span class="band__solid">Café passado</span><span class="band__badge"><img src="img/maquina.jpg" alt="" width="870" height="820" loading="lazy"></span><span class="band__outline">Climatizado</span><span class="band__star"><svg class="ico ico--sc" viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.6 7.6 20 18M8.6 16.4 20 6"/></svg></span>
+    <span class="band__solid">Sem fila</span><span class="band__badge"><img src="img/tesoura.jpg" alt="" width="212" height="169" loading="lazy"></span><span class="band__outline">Hora marcada</span><span class="band__star"><svg class="ico ico--sc" viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.6 7.6 20 18M8.6 16.4 20 6"/></svg></span>
+    <span class="band__solid">Café passado</span><span class="band__badge"><img src="img/maquina.jpg" alt="" width="870" height="820" loading="lazy"></span><span class="band__outline">Climatizado</span><span class="band__star"><svg class="ico ico--sc" viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.6 7.6 20 18M8.6 16.4 20 6"/></svg></span>
   </div></div>
 </section>
 
@@ -223,16 +223,16 @@
       <div class="about__stamp" aria-hidden="true">
         <svg viewBox="0 0 200 200"><defs><path id="circleText" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs>
           <text><textPath href="#circleText">BRAVOS BARBEARIA · RIO BRANCO · POA · </textPath></text></svg>
-        <span>✦</span>
+        <span><svg class="ico ico--sc" viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.6 7.6 20 18M8.6 16.4 20 6"/></svg></span>
       </div>
     </div>
     <div class="about__text">
       <span class="eyebrow reveal">A experiência</span>
-      <h2 class="h2 split">Muito mais que <em>uma barbearia.</em></h2>
+      <h2 class="h2 split">Muito mais que <em>uma barbearia</em></h2>
       <p class="about__lead reveal">Um espaço novo, climatizado e de bom gosto no Rio Branco. Aqui o atendimento é no horário marcado, a resenha é boa e sempre tem um café ou uma bebida gelada esperando por você.</p>
       <p class="about__lead reveal">Atendemos adultos e crianças com o mesmo capricho. Pai e filho podem cortar juntos, lado a lado.</p>
       <div class="about__stats">
-        <div class="stat"><strong><span class="count-dec" data-to="4.9">0,0</span><small>★</small></strong><span>Nota no Google</span></div>
+        <div class="stat"><strong><span class="count-dec" data-to="4.9">0,0</span><small class="stat__star"><svg viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8z"/></svg></small></strong><span>Nota no Google</span></div>
         <div class="stat"><strong><span class="count" data-to="166">0</span></strong><span>Avaliações</span></div>
         <div class="stat"><strong><span class="count" data-to="100">0</span>%</strong><span>Hora marcada</span></div>
         <div class="stat"><strong><span class="count" data-to="0">0</span> min</strong><span>De fila</span></div>
@@ -246,11 +246,11 @@
   <div class="container">
     <div class="center-head">
       <span class="eyebrow reveal">Avaliações</span>
-      <h2 class="h2 split">Quem senta na cadeira, <em>volta.</em></h2>
+      <h2 class="h2 split">O que dizem <em>os clientes</em></h2>
       <div class="rating reveal">
         <div class="rating__num"><span class="count-dec" data-to="4.9">0,0</span></div>
         <div class="rating__side">
-          <div class="rating__stars" aria-label="Nota 4,9 de 5"><span class="rating__stars-bg">★★★★★</span><span class="rating__stars-fill" id="ratingFill">★★★★★</span></div>
+          <div class="rating__stars" aria-label="Nota 4,9 de 5"><span class="rating__stars-bg"><span class="stars" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8z"/></svg></span></span><span class="rating__stars-fill" id="ratingFill"><span class="stars" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8z"/></svg></span></span></div>
           <p><strong><span class="count" data-to="166">0</span> avaliações</strong> no Google</p>
           <a class="link-arrow js-maps" href="#" target="_blank" rel="noopener noreferrer">Ver no Google <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
         </div>
@@ -258,8 +258,8 @@
     </div>
     <div class="stories__stage" id="storiesStage"></div>
     <div class="stories__controls">
-      <button class="round-btn magnetic" id="storyPrev" aria-label="Avaliação anterior">←</button>
-      <button class="round-btn magnetic" id="storyNext" aria-label="Próxima avaliação">→</button>
+      <button class="round-btn magnetic" id="storyPrev" aria-label="Avaliação anterior"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H5M11 6l-6 6 6 6"/></svg></button>
+      <button class="round-btn magnetic" id="storyNext" aria-label="Próxima avaliação"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></button>
     </div>
   </div>
   <div class="wall" aria-label="Mural de avaliações do Google">
@@ -274,7 +274,7 @@
   <div class="container location__grid">
     <div>
       <span class="eyebrow reveal">Localização</span>
-      <h2 class="h2 split">Visite a <em>Bravos.</em></h2>
+      <h2 class="h2 split">Como <em>chegar</em></h2>
       <p class="location__addr reveal js-address"></p>
       <p class="location__addr-sub reveal js-city"></p>
       <div class="status reveal" id="openStatus"><i></i><span>Verificando horário…</span></div>
@@ -284,15 +284,20 @@
         <a class="link-arrow js-maps" href="#" target="_blank" rel="noopener noreferrer">Como chegar <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
       </div>
     </div>
-    <a class="map tilt js-maps" href="#" target="_blank" rel="noopener noreferrer" aria-label="Abrir localização no Google Maps">
-      <svg class="map__grid" viewBox="0 0 400 400" preserveAspectRatio="none" aria-hidden="true">
-        <g stroke="rgba(255,255,255,.06)" stroke-width="1"><path d="M0 60H400M0 140H400M0 230H400M0 320H400M70 0V400M160 0V400M260 0V400M340 0V400"/></g>
-        <g stroke="rgba(255,255,255,.14)" stroke-width="10" fill="none" stroke-linecap="round"><path d="M-10 280 C 120 250, 180 200, 410 90"/><path d="M110 -10 C 140 140, 170 260, 230 410"/></g>
-        <g stroke="rgba(227,36,43,.6)" stroke-width="3" fill="none" stroke-dasharray="6 8" class="map__route"><path d="M20 380 C 90 330, 130 260, 200 200"/></g>
-      </svg>
-      <div class="map__pin"><span></span><b>Bravos</b></div>
-      <div class="map__label">R. Paraguai, 33 · Abrir no Google Maps ↗</div>
-    </a>
+    <div class="sv" id="streetView">
+      <div class="sv__tabs" role="tablist" aria-label="Visualização">
+        <button class="sv__tab is-active" type="button" role="tab" aria-selected="true" data-sv="street">Street View</button>
+        <button class="sv__tab" type="button" role="tab" aria-selected="false" data-sv="map">Mapa</button>
+      </div>
+      <div class="sv__frame">
+        <iframe id="svFrame" title="Street View da frente da Bravos Barbearia" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        <div class="sv__loading" id="svLoading"><span></span>Carregando a rua…</div>
+      </div>
+      <div class="sv__foot">
+        <span>Arraste para olhar em volta. Use os dedos ou o mouse para dar zoom.</span>
+        <a class="js-sv-open" href="#" target="_blank" rel="noopener noreferrer">Abrir no Google <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -302,7 +307,7 @@
     <div class="section-head section-head--wine">
       <div>
         <span class="eyebrow eyebrow--light reveal">Agenda aberta</span>
-        <h2 class="h2 split">Garanta seu <em>horário.</em></h2>
+        <h2 class="h2 split">Agende seu <em>horário</em></h2>
       </div>
       <p class="section-head__aside reveal">Confira o pedido, escolha o dia e o horário e toque em enviar. A mensagem vai pronta para o WhatsApp da Bravos e a equipe confirma com você.</p>
     </div>
@@ -319,8 +324,12 @@
       </div>
 
       <div class="panel">
-        <div class="panel__head"><span class="panel__num">2</span><h3>Dia e horário</h3></div>
+        <div class="panel__head"><span class="panel__num">2</span><h3>Serviço, dia e horário</h3></div>
+        <span class="picker__label">Toque para incluir ou tirar</span>
+        <div class="picker" id="picker" role="group" aria-label="Serviços"></div>
+        <span class="picker__label">Dia</span>
         <div class="days" id="bookingDays" role="tablist" aria-label="Dias disponíveis"></div>
+        <span class="picker__label">Horário</span>
         <div class="slots" id="bookingSlots" role="listbox" aria-label="Horários"></div>
         <p class="booking__foot">Atendimento com hora marcada. A equipe confirma o horário pelo WhatsApp.</p>
       </div>
@@ -332,7 +341,7 @@
           <div class="preview__bubble" id="msgPreview"></div>
         </div>
         <a class="btn btn--red btn--block magnetic" id="sendBtn" href="#" target="_blank" rel="noopener noreferrer" aria-disabled="true">
-          <svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.6a8.2 8.2 0 0 1-12.1 7.2L4 20l1.2-3.7A8.2 8.2 0 1 1 20 11.6Z"/><path d="M9.2 8.6c.2-.4.5-.4.7-.4h.5c.2 0 .4 0 .5.4l.7 1.7c.1.2 0 .4-.1.6l-.5.6c.6 1.1 1.5 2 2.6 2.6l.6-.5c.2-.1.4-.2.6-.1l1.7.7c.3.1.4.3.4.5v.5c0 .3-.1.6-.4.8-.6.4-1.4.6-2.1.4a8.4 8.4 0 0 1-5.3-5.3c-.2-.7 0-1.5.4-2.1Z"/></svg>
+          <svg class="wa-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
           <span class="btn__label" id="sendLabel">Enviar no WhatsApp</span>
         </a>
         <p class="send__hint" id="sendHint"></p>
@@ -346,7 +355,7 @@
   <div class="container faq__grid">
     <div>
       <span class="eyebrow reveal">Dúvidas</span>
-      <h2 class="h2 split">Antes de sentar <em>na cadeira.</em></h2>
+      <h2 class="h2 split">Perguntas <em>frequentes</em></h2>
       <a class="link-arrow js-wa" data-wa="duvida" href="#" target="_blank" rel="noopener noreferrer">Tenho outra dúvida <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
     </div>
     <div class="faq__list">
@@ -363,8 +372,8 @@
 <section class="final-cta">
   <a class="final-cta__link" href="#servicos">
     <span class="final-cta__small">Pronto para o próximo corte?</span>
-    <span class="final-cta__big"><span class="final-cta__line">Bora ficar</span><span class="final-cta__line final-cta__line--outline">na régua.</span></span>
-    <span class="final-cta__go">Montar meu horário →</span>
+    <span class="final-cta__big"><span class="final-cta__line">Bora ficar</span><span class="final-cta__line final-cta__line--outline">na régua</span></span>
+    <span class="final-cta__go">Montar meu horário <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span>
   </a>
 </section>
 
@@ -387,7 +396,7 @@
     <a href="#inicio" class="to-top magnetic" aria-label="Voltar ao topo">
       <svg viewBox="0 0 120 120" aria-hidden="true"><defs><path id="topCircle" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"/></defs>
         <text><textPath href="#topCircle">VOLTAR AO TOPO · VOLTAR AO TOPO · </textPath></text></svg>
-      <span>↑</span>
+      <span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20V5M6 11l6-6 6 6"/></svg></span>
     </a>
   </div>
   <div class="footer__giant" aria-hidden="true">BRAVOS</div>
@@ -398,7 +407,7 @@
 <aside class="drawer" id="cartDrawer" aria-hidden="true" aria-label="Carrinho">
   <div class="drawer__head">
     <h3>Seu pedido</h3>
-    <button class="drawer__close" id="drawerClose" aria-label="Fechar carrinho">×</button>
+    <button class="drawer__close" id="drawerClose" aria-label="Fechar carrinho"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
   </div>
   <ul class="order order--drawer" id="drawerList"></ul>
   <div class="drawer__foot">
@@ -410,12 +419,12 @@
 <!-- barra do carrinho (celular) -->
 <a href="#agenda" class="cart-bar" id="cartBar" aria-label="Ir para a agenda">
   <span class="cart-bar__info"><b id="cartBarCount">0 itens</b><small id="cartBarTotal">R$ 0</small></span>
-  <span class="cart-bar__go">Escolher horário →</span>
+  <span class="cart-bar__go">Escolher horário <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span>
 </a>
 
 <!-- WhatsApp -->
 <a class="wa-float js-wa" data-wa="geral" href="#" target="_blank" rel="noopener noreferrer" aria-label="Falar com a Bravos no WhatsApp">
-  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.6a8.2 8.2 0 0 1-12.1 7.2L4 20l1.2-3.7A8.2 8.2 0 1 1 20 11.6Z"/><path class="wa-fill" d="M9.2 8.6c.2-.4.5-.4.7-.4h.5c.2 0 .4 0 .5.4l.7 1.7c.1.2 0 .4-.1.6l-.5.6c.6 1.1 1.5 2 2.6 2.6l.6-.5c.2-.1.4-.2.6-.1l1.7.7c.3.1.4.3.4.5v.5c0 .3-.1.6-.4.8-.6.4-1.4.6-2.1.4a8.4 8.4 0 0 1-5.3-5.3c-.2-.7 0-1.5.4-2.1Z"/></svg>
+  <svg class="wa-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
 </a>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
