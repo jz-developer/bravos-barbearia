@@ -953,3 +953,11 @@ body.over-sv .cursor-dot,body.over-sv .cursor-trail{opacity:0!important}
 .to-top svg{position:static;inset:auto;animation:none;fill:none}
 .wave .word{display:inline-block;white-space:nowrap}
 .footer__giant text{font-size:232px;letter-spacing:4px}
+
+/* mapa desenhado (sem Street View) */
+.map{border-radius:10px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08),0 30px 60px -30px rgba(0,0,0,.8)}
+.map__pin span{background:var(--neon);box-shadow:0 0 18px var(--neon)}
+.map__label{display:inline-flex;align-items:center;gap:8px;font-weight:600;color:#ddd;transition:color .3s,gap .4s var(--ease)}
+.map__label .ico{width:15px;height:15px}
+.map:hover .map__label{color:#fff;gap:12px}
+.map:hover{box-shadow:inset 0 0 0 1.5px rgba(255,42,51,.6),0 0 40px rgba(255,42,51,.2)}

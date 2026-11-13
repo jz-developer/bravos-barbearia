@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://unsplash.com https://images.unsplash.com; connect-src 'self'; frame-src https://www.google.com https://maps.google.com; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://unsplash.com https://images.unsplash.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Bravos Barbearia · Rio Branco, Porto Alegre</title>
 <meta name="description" content="Bravos Barbearia no Rio Branco, Porto Alegre. Corte, barba na toalha quente, pigmentação e combo pai e filho com hora marcada. Nota 4,9 no Google. Monte seu pedido e agende pelo WhatsApp.">
@@ -275,18 +275,15 @@
         <a class="link-arrow js-maps" href="#" target="_blank" rel="noopener noreferrer">Como chegar <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
       </div>
     </div>
-    <div class="sv" id="streetView">
-      <div class="sv__frame">
-        <iframe id="svFrame" title="Street View da frente da Bravos Barbearia" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
-        <div class="sv__loading" id="svLoading"><span></span>Carregando a rua…</div>
-        <button class="sv__shield" id="svShield" type="button"><span>Toque para andar pela rua</span></button>
-        <button class="sv__lock" id="svLock" type="button" aria-label="Travar o Street View">Concluir</button>
-      </div>
-      <div class="sv__foot">
-        <span>Em frente à Bravos, na R. Paraguai, 33.</span>
-        <a class="js-sv-open" href="#" target="_blank" rel="noopener noreferrer">Abrir no Google <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
-      </div>
-    </div>
+    <a class="map tilt js-maps" href="#" target="_blank" rel="noopener noreferrer" aria-label="Abrir localização no Google Maps">
+      <svg class="map__grid" viewBox="0 0 400 400" preserveAspectRatio="none" aria-hidden="true">
+        <g stroke="rgba(255,255,255,.06)" stroke-width="1"><path d="M0 60H400M0 140H400M0 230H400M0 320H400M70 0V400M160 0V400M260 0V400M340 0V400"/></g>
+        <g stroke="rgba(255,255,255,.14)" stroke-width="10" fill="none" stroke-linecap="round"><path d="M-10 280 C 120 250, 180 200, 410 90"/><path d="M110 -10 C 140 140, 170 260, 230 410"/></g>
+        <g stroke="rgba(255,42,51,.75)" stroke-width="3" fill="none" stroke-dasharray="6 8" class="map__route"><path d="M20 380 C 90 330, 130 260, 200 200"/></g>
+      </svg>
+      <div class="map__pin"><span></span><b>Bravos</b></div>
+      <div class="map__label">R. Paraguai, 33 · Rio Branco <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+    </a>
   </div>
 </section>
 
