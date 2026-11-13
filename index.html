@@ -3,15 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://unsplash.com https://images.unsplash.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Bravos Barbearia · Rio Branco, Porto Alegre</title>
-<meta name="description" content="Bravos Barbearia: corte, barba na toalha quente, pigmentação e combo pai e filho. Atendimento com hora marcada, cerveja artesanal e sinuca. Agende pelo WhatsApp.">
-<meta name="theme-color" content="#0b0b0c">
-<meta property="og:title" content="Bravos Barbearia">
-<meta property="og:description" content="Corte, cerveja gelada e sinuca. Agende seu horário pelo WhatsApp.">
+<meta name="description" content="Bravos Barbearia no Rio Branco, Porto Alegre. Corte, barba na toalha quente, pigmentação e combo pai e filho com hora marcada. Nota 4,9 no Google. Monte seu pedido e agende pelo WhatsApp.">
+<meta name="theme-color" content="#09090a">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Bravos Barbearia · Rio Branco, Porto Alegre">
+<meta property="og:description" content="Corte, barba e pigmentação com hora marcada. Nota 4,9 com 166 avaliações no Google.">
 <meta property="og:image" content="img/cadeira.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23c8161d'/%3E%3Ctext x='32' y='45' font-family='Arial Black,Arial' font-weight='900' font-size='38' text-anchor='middle' fill='%23fff'%3EB%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/cadeira.jpg">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="is-loading">
@@ -19,152 +24,139 @@
 <!-- ============ PRELOADER ============ -->
 <div class="preloader" id="preloader" aria-hidden="true">
   <div class="preloader__inner">
-    <div class="preloader__logo">
-      <span>B</span><span>r</span><span>a</span><span>v</span><span>o</span><span>s</span>
-    </div>
-    <div class="preloader__sub">Barbearia · desde a primeira navalha</div>
+    <div class="preloader__logo"><span>B</span><span>R</span><span>A</span><span>V</span><span>O</span><span>S</span></div>
     <div class="preloader__bar"><i id="preloaderBar"></i></div>
-    <div class="preloader__count" id="preloaderCount">00</div>
   </div>
-  <div class="preloader__curtain preloader__curtain--top"></div>
-  <div class="preloader__curtain preloader__curtain--bottom"></div>
 </div>
 
-<!-- ============ OVERLAYS / CURSOR ============ -->
+<!-- ============ CAMADAS ============ -->
 <div class="grain" aria-hidden="true"></div>
 <div class="scroll-progress" aria-hidden="true"><i id="scrollProgress"></i></div>
 <canvas class="cursor-trail" id="cursorTrail" aria-hidden="true"></canvas>
-<div class="cursor" id="cursor" aria-hidden="true">
-  <div class="cursor__dot"></div>
-  <div class="cursor__ring"><span class="cursor__label" id="cursorLabel"></span></div>
-</div>
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
 
 <!-- ============ HEADER ============ -->
 <header class="header" id="header">
   <div class="header__inner">
-    <a href="#inicio" class="logo" data-cursor="Início" aria-label="Bravos Barbearia — início">
-      <span class="logo__mark">Bravos</span>
+    <a href="#inicio" class="logo" aria-label="Bravos Barbearia — início">
+      <span class="logo__mark">BRAVOS</span>
       <span class="logo__sub">Barbearia</span>
     </a>
-    <span class="header__dot" aria-hidden="true"></span>
-    <nav class="nav" id="nav" aria-label="Principal">
+    <nav class="nav" aria-label="Principal">
       <a href="#servicos" class="nav__link"><span data-text="Serviços">Serviços</span></a>
-      <a href="#galeria" class="nav__link"><span data-text="Galeria">Galeria</span></a>
-      <a href="#planos" class="nav__link"><span data-text="Planos">Planos</span></a>
-      <a href="#sobre" class="nav__link"><span data-text="Sobre">Sobre</span></a>
+      <a href="#galeria" class="nav__link"><span data-text="Espaço">Espaço</span></a>
+      <a href="#avaliacoes" class="nav__link"><span data-text="Avaliações">Avaliações</span></a>
+      <a href="#localizacao" class="nav__link"><span data-text="Local">Local</span></a>
       <a href="#agenda" class="nav__link"><span data-text="Agenda">Agenda</span></a>
     </nav>
-    <a class="btn btn--red btn--sm magnetic js-wa" data-wa="geral" href="#" target="_blank" rel="noopener" data-cursor="WhatsApp">
-      <span class="btn__text">Agendar no WhatsApp</span>
-    </a>
-    <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span></button>
+    <div class="header__actions">
+      <button class="cart-btn" id="cartBtn" aria-label="Abrir carrinho" aria-controls="cartDrawer" aria-expanded="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6.2"/><circle cx="10" cy="20.5" r="1.3"/><circle cx="17" cy="20.5" r="1.3"/></svg>
+        <span class="cart-btn__count" id="cartCount">0</span>
+      </button>
+      <a href="#servicos" class="btn btn--red btn--sm magnetic header__cta"><span class="btn__label">Agendar horário</span></a>
+      <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span></button>
+    </div>
   </div>
 </header>
 
-<!-- Mobile menu -->
 <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
   <nav class="mobile-menu__nav">
     <a href="#servicos"><em>01</em>Serviços</a>
-    <a href="#galeria"><em>02</em>Galeria</a>
-    <a href="#planos"><em>03</em>Planos</a>
-    <a href="#sobre"><em>04</em>Sobre</a>
+    <a href="#galeria"><em>02</em>Espaço</a>
+    <a href="#avaliacoes"><em>03</em>Avaliações</a>
+    <a href="#localizacao"><em>04</em>Local</a>
     <a href="#agenda"><em>05</em>Agenda</a>
   </nav>
-  <a class="btn btn--red js-wa" data-wa="geral" href="#" target="_blank" rel="noopener">Agendar no WhatsApp</a>
-  <p class="mobile-menu__foot js-phone"></p>
+  <div class="mobile-menu__foot">
+    <a class="btn btn--red js-wa" data-wa="geral" href="#" target="_blank" rel="noopener noreferrer"><span class="btn__label">Falar no WhatsApp</span></a>
+    <p class="js-phone"></p>
+  </div>
 </div>
 
 <main id="inicio">
 
 <!-- ============ HERO ============ -->
 <section class="hero" id="hero">
-  <div class="hero__frame" data-cursor="Role">
+  <div class="hero__frame">
     <div class="hero__media">
-      <img class="hero__img js-img" src="img/cadeira.jpg" data-hd="https://unsplash.com/photos/dU6eE_j2My8/download?w=2200" alt="Cadeira clássica de barbeiro em couro e metal cromado">
+      <img class="hero__img js-img" src="img/cadeira.jpg" data-hd="https://unsplash.com/photos/dU6eE_j2My8/download?w=2200" alt="Cadeira clássica de barbeiro em couro e metal" width="950" height="705" fetchpriority="high" decoding="async">
     </div>
-    <div class="hero__vignette"></div>
-    <div class="hero__scan"></div>
-
+    <div class="hero__shade"></div>
     <span class="corner corner--tl"></span><span class="corner corner--tr"></span>
     <span class="corner corner--bl"></span><span class="corner corner--br"></span>
-
-    <div class="hero__hud hero__hud--tl">
-      <span class="rec"><i></i>REC</span>
-      <span id="recTimer">00:00:00:00</span>
-      <span class="js-city"></span>
-    </div>
-    <div class="hero__hud hero__hud--tr">Só com hora marcada</div>
-    <div class="hero__hud hero__hud--br">Cerveja e Sinuca</div>
-    <div class="hero__crosshair" aria-hidden="true"></div>
+    <div class="hero__hud hero__hud--tl"><span class="rec"><i></i>REC</span><span id="recTimer">00:00:00</span></div>
+    <div class="hero__hud hero__hud--tr js-city"></div>
 
     <div class="hero__content">
-      <h1 class="hero__title split-words" aria-label="Corte, cerveja gelada e sinuca no Rio Branco.">
-        Corte, cerveja gelada e sinuca no Rio Branco.
+      <a href="#avaliacoes" class="chip reveal" aria-label="Nota 4,9 com 166 avaliações no Google">
+        <span class="chip__stars">★★★★★</span><strong>4,9</strong><span>· 166 avaliações no Google</span>
+      </a>
+      <h1 class="hero__title">
+        <span class="line"><span>Estilo</span></span>
+        <span class="line"><span><em>afiado,</em></span></span>
+        <span class="line"><span>sem fila.</span></span>
       </h1>
-      <p class="hero__lead reveal-blur">Atendimento exclusivo com hora marcada para homens que valorizam o próprio tempo. Aqui você chega, senta e é atendido.</p>
-      <div class="hero__ctas reveal-blur">
-        <a href="#agenda" class="btn btn--red magnetic" data-cursor="Agendar">
-          <span class="btn__text">Agendar horário</span>
-          <svg class="btn__icon" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
-        <a href="#servicos" class="link-arrow magnetic" data-cursor="Ver">
-          Ver serviços
-          <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg>
-        </a>
+      <p class="hero__lead reveal">Corte, barba e pigmentação com hora marcada no Rio Branco. Você chega, toma um café e senta na cadeira na hora certa.</p>
+      <div class="hero__ctas reveal">
+        <a href="#servicos" class="btn btn--red magnetic"><span class="btn__label">Montar meu horário</span>
+          <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="#avaliacoes" class="link-arrow">Ver avaliações <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
       </div>
     </div>
-
-    <div class="hero__scroll" aria-hidden="true">
-      <span>Role</span><i></i>
+    <div class="hero__rotator reveal" aria-hidden="true">
+      <span class="hero__rotator-label">Hoje tem</span>
+      <span class="hero__rotator-words" id="heroWords"><b>Corte navalhado</b><b>Barba na toalha</b><b>Pigmentação</b><b>Pai e filho</b></span>
     </div>
+    <div class="hero__scroll" aria-hidden="true"><i></i></div>
   </div>
 </section>
 
 <!-- ============ TICKER ============ -->
 <div class="ticker" aria-hidden="true">
   <div class="ticker__track">
-    <span>Corte navalhado</span><b>✦</b><span>Barba na toalha quente</span><b>✦</b><span>Pigmentação</span><b>✦</b><span>Combo pai e filho</span><b>✦</b><span>Cerveja artesanal</span><b>✦</b><span>Sinuca</span><b>✦</b>
-    <span>Corte navalhado</span><b>✦</b><span>Barba na toalha quente</span><b>✦</b><span>Pigmentação</span><b>✦</b><span>Combo pai e filho</span><b>✦</b><span>Cerveja artesanal</span><b>✦</b><span>Sinuca</span><b>✦</b>
+    <span>Corte navalhado</span><b>✦</b><span>Barba na toalha quente</span><b>✦</b><span>Pigmentação</span><b>✦</b><span>Combo pai e filho</span><b>✦</b><span>Café passado</span><b>✦</b><span>Ambiente climatizado</span><b>✦</b>
+    <span>Corte navalhado</span><b>✦</b><span>Barba na toalha quente</span><b>✦</b><span>Pigmentação</span><b>✦</b><span>Combo pai e filho</span><b>✦</b><span>Café passado</span><b>✦</b><span>Ambiente climatizado</span><b>✦</b>
   </div>
 </div>
 
-<!-- ============ SERVIÇOS ============ -->
+<!-- ============ SERVIÇOS & PREÇOS ============ -->
 <section class="services section" id="servicos">
   <div class="container">
     <div class="section-head">
       <div>
-        <span class="eyebrow eyebrow--red reveal-up">Serviços exclusivos</span>
-        <h2 class="display split-words">Precisão absoluta na navalha.</h2>
+        <span class="eyebrow reveal">Serviços &amp; preços</span>
+        <h2 class="h2 split">Escolha o que vai <em>fazer hoje.</em></h2>
       </div>
-      <p class="section-head__aside reveal-blur">Sem espera. Apenas o melhor resultado para o seu estilo, com hora marcada e atenção total na cadeira.</p>
+      <p class="section-head__aside reveal">Adicione os serviços ao carrinho, escolha o dia e o horário e envie tudo pronto para o nosso WhatsApp. Sem cadastro, sem senha.</p>
     </div>
-
-    <div class="services__grid" id="servicesGrid">
-      <!-- preenchido via JS (CONFIG.servicos) -->
+    <div class="steps reveal" aria-label="Como funciona">
+      <div class="step"><b>1</b><span>Escolha os serviços</span></div>
+      <i></i>
+      <div class="step"><b>2</b><span>Escolha dia e horário</span></div>
+      <i></i>
+      <div class="step"><b>3</b><span>Envie no WhatsApp</span></div>
     </div>
-  </div>
-  <!-- imagem que segue o cursor -->
-  <div class="hover-reveal" id="hoverReveal" aria-hidden="true">
-    <div class="hover-reveal__inner"><img src="" alt=""></div>
+    <div class="price-grid" id="priceGrid"><!-- JS --></div>
+    <p class="services__note reveal">Valores de referência. Cortes muito longos ou com desenho podem ter ajuste, combinado antes de começar.</p>
   </div>
 </section>
 
 <!-- ============ SPOTLIGHT ============ -->
-<section class="spotlight" id="spotlight" data-cursor="Luz">
+<section class="spotlight" id="spotlight">
   <div class="spotlight__layer spotlight__layer--dark">
-    <img class="js-img" src="img/maquina.jpg" data-hd="https://unsplash.com/photos/PDDvMlScofU/download?w=2000" alt="">
+    <img class="js-img" src="img/maquina.jpg" data-hd="https://unsplash.com/photos/PDDvMlScofU/download?w=2000" alt="" width="870" height="820" loading="lazy" decoding="async">
   </div>
   <div class="spotlight__layer spotlight__layer--lit" id="spotlightLit">
-    <img class="js-img" src="img/maquina.jpg" data-hd="https://unsplash.com/photos/PDDvMlScofU/download?w=2000" alt="Barbeiro fazendo o acabamento da barba com máquina">
+    <img class="js-img" src="img/maquina.jpg" data-hd="https://unsplash.com/photos/PDDvMlScofU/download?w=2000" alt="Barbeiro fazendo o acabamento da barba" width="870" height="820" loading="lazy" decoding="async">
   </div>
-  <span class="spotlight__hint">Mova a luz pela foto</span>
+  <span class="spotlight__hint">Passe o dedo ou o mouse na foto</span>
   <div class="container spotlight__content">
-    <span class="eyebrow reveal-up">Acabamento</span>
-    <h2 class="display display--xl split-words">O detalhe que só aparece de perto</h2>
-    <p class="spotlight__lead reveal-blur">Navalha quente, toalha no rosto e o contorno da barba feito na mão. Passe a luz pela foto.</p>
-    <div class="hero__ctas reveal-blur">
-      <a class="btn btn--dark magnetic js-wa" data-wa="servico" data-servico="barba" href="#" target="_blank" rel="noopener" data-cursor="WhatsApp"><span class="btn__text">Quero a barba na toalha</span></a>
-      <a href="#planos" class="link-arrow" data-cursor="Ver">Ver planos <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+    <span class="eyebrow eyebrow--light reveal">Acabamento</span>
+    <h2 class="h2 h2--xl split">O detalhe que só aparece <em>de perto.</em></h2>
+    <p class="spotlight__lead reveal">Toalha quente, navalha afiada e contorno feito na mão. É o tipo de cuidado que faz o cliente voltar.</p>
+    <div class="hero__ctas reveal">
+      <button class="btn btn--light magnetic js-add" data-id="barba" type="button"><span class="btn__label">Adicionar barba · R$ 40</span></button>
     </div>
   </div>
 </section>
@@ -172,138 +164,103 @@
 <!-- ============ GALERIA ============ -->
 <section class="club" id="galeria">
   <div class="club__sticky">
-    <h2 class="club__title" aria-label="Entre no clube">
-      <span class="club__word">Entre</span> <span class="club__word">no</span> <span class="club__word">clube</span>
+    <h2 class="club__title" aria-label="Conheça o espaço">
+      <span class="club__word">Conheça</span> <span class="club__word">o</span> <span class="club__word"><em>espaço</em></span>
     </h2>
-    <p class="club__sub reveal-blur">Arraste o olhar. Clique para ampliar.</p>
-
-    <figure class="club__img club__img--1" data-speed="0.18" data-depth="22" data-cursor="Ampliar">
-      <img class="js-img" src="img/sinuca.jpg" data-hd="https://unsplash.com/photos/k6RsU8om2UE/download?w=1200" alt="Mesa de sinuca nos fundos da barbearia">
-      <figcaption>A sinuca dos fundos</figcaption>
+    <figure class="club__img club__img--1" data-speed="0.18" data-depth="22">
+      <img class="js-img" src="img/sinuca.jpg" data-hd="https://unsplash.com/photos/k6RsU8om2UE/download?w=1200" alt="Ambiente da barbearia" width="375" height="430" loading="lazy" decoding="async">
+      <figcaption>O salão</figcaption>
     </figure>
-    <figure class="club__img club__img--2" data-speed="-0.12" data-depth="40" data-cursor="Ampliar">
-      <img src="img/equipe.jpg" alt="Barbeiros atendendo clientes">
-      <figcaption>Corte na tesoura</figcaption>
+    <figure class="club__img club__img--2" data-speed="-0.12" data-depth="40">
+      <img src="img/equipe.jpg" alt="Barbeiros atendendo clientes" width="256" height="191" loading="lazy" decoding="async">
+      <figcaption>Lado a lado</figcaption>
     </figure>
-    <figure class="club__img club__img--3" data-speed="0.32" data-depth="60" data-cursor="Ampliar">
-      <img class="js-img" src="img/tesoura.jpg" data-hd="https://unsplash.com/photos/Xw1NnubpdPY/download?w=900" alt="Cadeira e espelho da barbearia">
+    <figure class="club__img club__img--3" data-speed="0.32" data-depth="60">
+      <img class="js-img" src="img/tesoura.jpg" data-hd="https://unsplash.com/photos/Xw1NnubpdPY/download?w=900" alt="Cadeira e espelho" width="212" height="169" loading="lazy" decoding="async">
       <figcaption>A cadeira</figcaption>
     </figure>
-    <figure class="club__img club__img--4" data-speed="-0.22" data-depth="30" data-cursor="Ampliar">
-      <img class="js-img" src="img/barbeiro.jpg" data-hd="https://unsplash.com/photos/0iW0NSHjiiw/download?w=1000" alt="Barbeiro finalizando corte">
+    <figure class="club__img club__img--4" data-speed="-0.22" data-depth="30">
+      <img class="js-img" src="img/barbeiro.jpg" data-hd="https://unsplash.com/photos/0iW0NSHjiiw/download?w=1000" alt="Barbeiro finalizando um corte" width="496" height="439" loading="lazy" decoding="async">
       <figcaption>O ritual</figcaption>
     </figure>
-    <figure class="club__img club__img--5" data-speed="0.1" data-depth="18" data-cursor="Ampliar">
-      <img src="img/chope.jpg" alt="Torneiras de chope artesanal">
-      <figcaption>Chope na torneira</figcaption>
+    <figure class="club__img club__img--5" data-speed="0.1" data-depth="18">
+      <img src="img/chope.jpg" alt="Bebidas geladas" width="375" height="313" loading="lazy" decoding="async">
+      <figcaption>Bebida gelada</figcaption>
     </figure>
-    <figure class="club__img club__img--6" data-speed="-0.3" data-depth="50" data-cursor="Ampliar">
-      <img class="js-img" src="img/maquina.jpg" data-hd="https://unsplash.com/photos/9twmmS4aXlE/download?w=900" alt="Detalhe da máquina de acabamento">
+    <figure class="club__img club__img--6" data-speed="-0.3" data-depth="50">
+      <img class="js-img" src="img/maquina.jpg" data-hd="https://unsplash.com/photos/9twmmS4aXlE/download?w=900" alt="Detalhe do acabamento" width="870" height="820" loading="lazy" decoding="async">
       <figcaption>Acabamento</figcaption>
     </figure>
   </div>
 </section>
 
-<!-- Lightbox -->
-<div class="lightbox" id="lightbox" aria-hidden="true">
+<div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Foto ampliada">
   <button class="lightbox__close" id="lightboxClose" aria-label="Fechar">×</button>
-  <img id="lightboxImg" src="" alt="">
+  <img id="lightboxImg" src="data:," alt="">
   <p id="lightboxCap"></p>
 </div>
 
-<!-- ============ FAIXA VERMELHA ============ -->
+<!-- ============ FAIXA ============ -->
 <section class="band" aria-label="Destaques">
-  <div class="band__row band__row--a" data-dir="1">
-    <div class="band__track">
-      <span class="band__solid">Sem fila</span><span class="band__badge"><img src="img/tesoura.jpg" alt=""></span><span class="band__outline">Cerveja artesanal</span><span class="band__star">✦</span>
-      <span class="band__solid">Hora marcada</span><span class="band__badge"><img src="img/maquina.jpg" alt=""></span><span class="band__outline">Sinuca</span><span class="band__star">✦</span>
-      <span class="band__solid">Sem fila</span><span class="band__badge"><img src="img/tesoura.jpg" alt=""></span><span class="band__outline">Cerveja artesanal</span><span class="band__star">✦</span>
-      <span class="band__solid">Hora marcada</span><span class="band__badge"><img src="img/maquina.jpg" alt=""></span><span class="band__outline">Sinuca</span><span class="band__star">✦</span>
-    </div>
-  </div>
-  <div class="band__row band__row--b" data-dir="-1">
-    <div class="band__track">
-      <span class="band__outline">Navalha quente</span><span class="band__star">✦</span><span class="band__solid">Toalha no rosto</span><span class="band__star">✦</span><span class="band__outline">Degradê</span><span class="band__star">✦</span><span class="band__solid">Pai e filho</span><span class="band__star">✦</span>
-      <span class="band__outline">Navalha quente</span><span class="band__star">✦</span><span class="band__solid">Toalha no rosto</span><span class="band__star">✦</span><span class="band__outline">Degradê</span><span class="band__star">✦</span><span class="band__solid">Pai e filho</span><span class="band__star">✦</span>
-    </div>
-  </div>
-</section>
-
-<!-- ============ PLANOS ============ -->
-<section class="plans section" id="planos">
-  <div class="plans__card" id="plansCard">
-    <div class="section-head section-head--light">
-      <div>
-        <span class="eyebrow eyebrow--red reveal-up">Planos</span>
-        <h2 class="display display--dark split-words">Escolha o seu estilo</h2>
-      </div>
-      <p class="section-head__aside section-head__aside--dark reveal-blur">Corte, barba na toalha quente, pigmentação e combo pai e filho. Clique em um plano e já fale com a gente no WhatsApp.</p>
-    </div>
-    <div class="plans__list" id="plansList">
-      <!-- preenchido via JS (CONFIG.planos) -->
-    </div>
-    <a href="#agenda" class="link-arrow link-arrow--dark" data-cursor="Agenda">Escolher dia e horário <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
-  </div>
+  <div class="band__row" data-dir="1"><div class="band__track">
+    <span class="band__solid">Sem fila</span><span class="band__badge"><img src="img/tesoura.jpg" alt="" width="212" height="169" loading="lazy"></span><span class="band__outline">Hora marcada</span><span class="band__star">✦</span>
+    <span class="band__solid">Café passado</span><span class="band__badge"><img src="img/maquina.jpg" alt="" width="870" height="820" loading="lazy"></span><span class="band__outline">Climatizado</span><span class="band__star">✦</span>
+    <span class="band__solid">Sem fila</span><span class="band__badge"><img src="img/tesoura.jpg" alt="" width="212" height="169" loading="lazy"></span><span class="band__outline">Hora marcada</span><span class="band__star">✦</span>
+    <span class="band__solid">Café passado</span><span class="band__badge"><img src="img/maquina.jpg" alt="" width="870" height="820" loading="lazy"></span><span class="band__outline">Climatizado</span><span class="band__star">✦</span>
+  </div></div>
 </section>
 
 <!-- ============ SOBRE ============ -->
 <section class="about section" id="sobre">
   <div class="container about__grid">
     <div class="about__media">
-      <div class="about__frame tilt" data-cursor="Bravos">
-        <img class="about__main parallax-img js-img" src="img/barbeiro.jpg" data-hd="https://unsplash.com/photos/0iW0NSHjiiw/download?w=1200" alt="Barbeiro trabalhando o corte de um cliente">
+      <div class="about__frame tilt">
+        <img class="about__main js-img" src="img/barbeiro.jpg" data-hd="https://unsplash.com/photos/0iW0NSHjiiw/download?w=1200" alt="Barbeiro trabalhando no corte de um cliente" width="496" height="439" loading="lazy" decoding="async">
       </div>
       <div class="about__frame about__frame--small tilt">
-        <img src="img/equipe.jpg" alt="Equipe atendendo">
+        <img src="img/equipe.jpg" alt="Equipe atendendo" width="256" height="191" loading="lazy" decoding="async">
       </div>
       <div class="about__stamp" aria-hidden="true">
         <svg viewBox="0 0 200 200"><defs><path id="circleText" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs>
-          <text><textPath href="#circleText">BRAVOS BARBEARIA · CORTE · BARBA · SINUCA · </textPath></text></svg>
+          <text><textPath href="#circleText">BRAVOS BARBEARIA · RIO BRANCO · POA · </textPath></text></svg>
         <span>✦</span>
       </div>
     </div>
     <div class="about__text">
-      <span class="eyebrow eyebrow--red reveal-up">A experiência</span>
-      <h2 class="display display--caps split-words">Muito mais que uma barbearia</h2>
-      <p class="about__lead reveal-blur">Um refúgio no Rio Branco, em Porto Alegre, onde você cuida do visual, bebe uma cerveja artesanal e joga uma partida de sinuca sem pressa.</p>
-      <p class="about__sign reveal-blur">Bravos Barbearia</p>
+      <span class="eyebrow reveal">A experiência</span>
+      <h2 class="h2 split">Muito mais que <em>uma barbearia.</em></h2>
+      <p class="about__lead reveal">Um espaço novo, climatizado e de bom gosto no Rio Branco. Aqui o atendimento é no horário marcado, a resenha é boa e sempre tem um café ou uma bebida gelada esperando por você.</p>
+      <p class="about__lead reveal">Atendemos adultos e crianças com o mesmo capricho. Pai e filho podem cortar juntos, lado a lado.</p>
       <div class="about__stats">
-        <div class="stat"><strong><span class="count" data-to="100">0</span>%</strong><small>Com hora marcada</small></div>
-        <div class="stat"><strong><span class="count" data-to="0">0</span> min</strong><small>De fila</small></div>
-        <div class="stat"><strong><span class="count" data-to="4">0</span></strong><small>Serviços de assinatura</small></div>
-        <div class="stat"><strong class="js-city-short">Centro</strong><small class="js-city"></small></div>
+        <div class="stat"><strong><span class="count-dec" data-to="4.9">0,0</span><small>★</small></strong><span>Nota no Google</span></div>
+        <div class="stat"><strong><span class="count" data-to="166">0</span></strong><span>Avaliações</span></div>
+        <div class="stat"><strong><span class="count" data-to="100">0</span>%</strong><span>Hora marcada</span></div>
+        <div class="stat"><strong><span class="count" data-to="0">0</span> min</strong><span>De fila</span></div>
       </div>
-      <a class="link-arrow magnetic js-wa" data-wa="geral" href="#" target="_blank" rel="noopener" data-cursor="WhatsApp">Agendar no WhatsApp <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
     </div>
   </div>
 </section>
 
-<!-- ============ DEPOIMENTOS ============ -->
-<section class="stories section" id="depoimentos">
+<!-- ============ AVALIAÇÕES ============ -->
+<section class="reviews section" id="avaliacoes">
   <div class="container">
     <div class="center-head">
-      <span class="eyebrow eyebrow--red reveal-up">Depoimentos</span>
-      <h2 class="display split-words">O que dizem nossos clientes</h2>
-      <div class="rating reveal-blur">
+      <span class="eyebrow reveal">Avaliações</span>
+      <h2 class="h2 split">Quem senta na cadeira, <em>volta.</em></h2>
+      <div class="rating reveal">
         <div class="rating__num"><span class="count-dec" data-to="4.9">0,0</span></div>
         <div class="rating__side">
           <div class="rating__stars" aria-label="Nota 4,9 de 5"><span class="rating__stars-bg">★★★★★</span><span class="rating__stars-fill" id="ratingFill">★★★★★</span></div>
           <p><strong><span class="count" data-to="166">0</span> avaliações</strong> no Google</p>
-          <a class="link-arrow js-maps" href="#" target="_blank" rel="noopener" data-cursor="Google">Ver todas no Google <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+          <a class="link-arrow js-maps" href="#" target="_blank" rel="noopener noreferrer">Ver no Google <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
         </div>
       </div>
     </div>
-    <div class="stories__stage" id="storiesStage" data-cursor="Arraste">
-      <!-- preenchido via JS -->
-    </div>
+    <div class="stories__stage" id="storiesStage"></div>
     <div class="stories__controls">
-      <button class="round-btn magnetic" id="storyPrev" aria-label="Anterior">←</button>
-      <button class="round-btn magnetic" id="storyNext" aria-label="Próximo">→</button>
+      <button class="round-btn magnetic" id="storyPrev" aria-label="Avaliação anterior">←</button>
+      <button class="round-btn magnetic" id="storyNext" aria-label="Próxima avaliação">→</button>
     </div>
-  </div>
-  <div class="wall-head container">
-    <h3 class="wall-head__title split-words">Quem senta na cadeira, volta.</h3>
-    <p class="wall-head__sub reveal-blur">Avaliações reais de clientes no Google</p>
   </div>
   <div class="wall" aria-label="Mural de avaliações do Google">
     <div class="wall__row" id="wallA" data-dir="1"></div>
@@ -316,67 +273,69 @@
 <section class="location section" id="localizacao">
   <div class="container location__grid">
     <div>
-      <span class="eyebrow reveal-up">Localização</span>
-      <h2 class="display split-words">Visite a Bravos</h2>
-      <p class="location__addr reveal-blur js-address"></p>
-      <p class="location__addr-sub reveal-blur js-city"></p>
-      <div class="status reveal-blur" id="openStatus"><i></i><span>Verificando horário…</span></div>
-      <ul class="hours" id="hoursList"><!-- via JS --></ul>
+      <span class="eyebrow reveal">Localização</span>
+      <h2 class="h2 split">Visite a <em>Bravos.</em></h2>
+      <p class="location__addr reveal js-address"></p>
+      <p class="location__addr-sub reveal js-city"></p>
+      <div class="status reveal" id="openStatus"><i></i><span>Verificando horário…</span></div>
+      <ul class="hours" id="hoursList"></ul>
       <div class="hero__ctas">
-        <a class="btn btn--red magnetic js-wa" data-wa="geral" href="#" target="_blank" rel="noopener" data-cursor="WhatsApp"><span class="btn__text">Agendar no WhatsApp</span></a>
-        <a class="link-arrow js-maps" href="#" target="_blank" rel="noopener" data-cursor="Mapa">Como chegar <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+        <a class="btn btn--red magnetic" href="#servicos"><span class="btn__label">Agendar horário</span></a>
+        <a class="link-arrow js-maps" href="#" target="_blank" rel="noopener noreferrer">Como chegar <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
       </div>
     </div>
-    <div class="location__visual tilt" data-cursor="Mapa">
-      <a class="js-maps" href="#" target="_blank" rel="noopener" aria-label="Abrir no mapa">
-        <div class="map">
-          <svg class="map__grid" viewBox="0 0 400 400" preserveAspectRatio="none" aria-hidden="true">
-            <g stroke="rgba(255,255,255,.07)" stroke-width="1">
-              <path d="M0 60H400M0 140H400M0 230H400M0 320H400M70 0V400M160 0V400M260 0V400M340 0V400"/>
-            </g>
-            <g stroke="rgba(255,255,255,.16)" stroke-width="10" fill="none" stroke-linecap="round">
-              <path d="M-10 280 C 120 250, 180 200, 410 90"/>
-              <path d="M110 -10 C 140 140, 170 260, 230 410"/>
-            </g>
-            <g stroke="rgba(193,25,32,.55)" stroke-width="3" fill="none" stroke-dasharray="6 8" class="map__route">
-              <path d="M20 380 C 90 330, 130 260, 200 200"/>
-            </g>
-          </svg>
-          <div class="map__pin"><span></span><b>Bravos</b></div>
-          <div class="map__label">Abrir no Google Maps ↗</div>
-        </div>
-      </a>
-    </div>
+    <a class="map tilt js-maps" href="#" target="_blank" rel="noopener noreferrer" aria-label="Abrir localização no Google Maps">
+      <svg class="map__grid" viewBox="0 0 400 400" preserveAspectRatio="none" aria-hidden="true">
+        <g stroke="rgba(255,255,255,.06)" stroke-width="1"><path d="M0 60H400M0 140H400M0 230H400M0 320H400M70 0V400M160 0V400M260 0V400M340 0V400"/></g>
+        <g stroke="rgba(255,255,255,.14)" stroke-width="10" fill="none" stroke-linecap="round"><path d="M-10 280 C 120 250, 180 200, 410 90"/><path d="M110 -10 C 140 140, 170 260, 230 410"/></g>
+        <g stroke="rgba(227,36,43,.6)" stroke-width="3" fill="none" stroke-dasharray="6 8" class="map__route"><path d="M20 380 C 90 330, 130 260, 200 200"/></g>
+      </svg>
+      <div class="map__pin"><span></span><b>Bravos</b></div>
+      <div class="map__label">R. Paraguai, 33 · Abrir no Google Maps ↗</div>
+    </a>
   </div>
 </section>
 
 <!-- ============ AGENDA ============ -->
 <section class="booking section" id="agenda">
-  <div class="container booking__grid">
-    <div class="booking__left">
-      <span class="eyebrow reveal-up">Agenda aberta</span>
-      <h2 class="display display--xl split-words">Garanta seu horário na Bravos</h2>
-      <p class="booking__lead reveal-blur">Escolha o serviço, o dia e o horário. A mensagem já vai pronta para o nosso WhatsApp — é só enviar.</p>
-
-      <div class="booking__step"><em>1</em> Serviço</div>
-      <div class="booking__services" id="bookingServices" role="radiogroup" aria-label="Serviço"><!-- via JS --></div>
-
-      <label class="booking__name">
-        <span><em>2</em> Seu nome <small>(opcional)</small></span>
-        <input type="text" id="clientName" placeholder="Ex.: João" autocomplete="given-name" maxlength="40">
-      </label>
+  <div class="container">
+    <div class="section-head section-head--wine">
+      <div>
+        <span class="eyebrow eyebrow--light reveal">Agenda aberta</span>
+        <h2 class="h2 split">Garanta seu <em>horário.</em></h2>
+      </div>
+      <p class="section-head__aside reveal">Confira o pedido, escolha o dia e o horário e toque em enviar. A mensagem vai pronta para o WhatsApp da Bravos e a equipe confirma com você.</p>
     </div>
 
-    <div class="booking__right">
-      <div class="booking__step"><em>3</em> Dia e horário</div>
-      <p class="booking__hours-note" id="bookingHoursNote"></p>
-      <div class="booking__days" id="bookingDays" role="tablist"><!-- via JS --></div>
-      <div class="booking__slots" id="bookingSlots"><!-- via JS --></div>
-      <p class="booking__foot">Atendimento estritamente com hora marcada. Clique em um horário livre para abrir o WhatsApp com tudo preenchido.</p>
+    <div class="booking__grid">
+      <div class="panel">
+        <div class="panel__head"><span class="panel__num">1</span><h3>Seu pedido</h3></div>
+        <ul class="order" id="orderList"></ul>
+        <div class="order__total" id="orderTotal"></div>
+        <label class="field">
+          <span>Seu nome <small>(opcional)</small></span>
+          <input type="text" id="clientName" placeholder="Ex.: João" autocomplete="given-name" maxlength="30" inputmode="text">
+        </label>
+      </div>
 
-      <div class="booking__preview">
-        <span class="booking__preview-label">Prévia da mensagem</span>
-        <p id="msgPreview">Selecione um horário…</p>
+      <div class="panel">
+        <div class="panel__head"><span class="panel__num">2</span><h3>Dia e horário</h3></div>
+        <div class="days" id="bookingDays" role="tablist" aria-label="Dias disponíveis"></div>
+        <div class="slots" id="bookingSlots" role="listbox" aria-label="Horários"></div>
+        <p class="booking__foot">Atendimento com hora marcada. A equipe confirma o horário pelo WhatsApp.</p>
+      </div>
+
+      <div class="panel panel--send">
+        <div class="panel__head"><span class="panel__num">3</span><h3>Enviar</h3></div>
+        <div class="preview">
+          <div class="preview__bar"><span class="preview__avatar">B</span><div><strong>Bravos Barbearia</strong><small>WhatsApp</small></div></div>
+          <div class="preview__bubble" id="msgPreview"></div>
+        </div>
+        <a class="btn btn--red btn--block magnetic" id="sendBtn" href="#" target="_blank" rel="noopener noreferrer" aria-disabled="true">
+          <svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.6a8.2 8.2 0 0 1-12.1 7.2L4 20l1.2-3.7A8.2 8.2 0 1 1 20 11.6Z"/><path d="M9.2 8.6c.2-.4.5-.4.7-.4h.5c.2 0 .4 0 .5.4l.7 1.7c.1.2 0 .4-.1.6l-.5.6c.6 1.1 1.5 2 2.6 2.6l.6-.5c.2-.1.4-.2.6-.1l1.7.7c.3.1.4.3.4.5v.5c0 .3-.1.6-.4.8-.6.4-1.4.6-2.1.4a8.4 8.4 0 0 1-5.3-5.3c-.2-.7 0-1.5.4-2.1Z"/></svg>
+          <span class="btn__label" id="sendLabel">Enviar no WhatsApp</span>
+        </a>
+        <p class="send__hint" id="sendHint"></p>
       </div>
     </div>
   </div>
@@ -386,26 +345,26 @@
 <section class="faq section" id="faq">
   <div class="container faq__grid">
     <div>
-      <span class="eyebrow eyebrow--red reveal-up">Dúvidas</span>
-      <h2 class="display split-words">Antes de sentar na cadeira</h2>
-      <a class="link-arrow js-wa" data-wa="duvida" href="#" target="_blank" rel="noopener" data-cursor="WhatsApp">Tenho outra dúvida <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+      <span class="eyebrow reveal">Dúvidas</span>
+      <h2 class="h2 split">Antes de sentar <em>na cadeira.</em></h2>
+      <a class="link-arrow js-wa" data-wa="duvida" href="#" target="_blank" rel="noopener noreferrer">Tenho outra dúvida <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
     </div>
     <div class="faq__list">
-      <details class="faq__item"><summary>Preciso agendar ou posso chegar direto?<i></i></summary><p>Trabalhamos só com hora marcada. É assim que garantimos zero fila e atenção total. Agende pelo site ou pelo WhatsApp em menos de um minuto.</p></details>
-      <details class="faq__item"><summary>A cerveja está inclusa?<i></i></summary><p>No plano Corte e Barba a cerveja artesanal está inclusa. Nos demais serviços você pode pedir à parte.</p></details>
-      <details class="faq__item"><summary>Posso levar meu filho?<i></i></summary><p>Claro. O Combo Pai e Filho faz o atendimento dos dois ao mesmo tempo, com sinuca liberada enquanto vocês esperam a finalização.</p></details>
-      <details class="faq__item"><summary>E se eu precisar remarcar?<i></i></summary><p>Sem problema. Avise pelo WhatsApp com antecedência e encaixamos você em outro horário livre.</p></details>
-      <details class="faq__item"><summary>Quais formas de pagamento?<i></i></summary><p>Pix, cartão de crédito e débito e dinheiro.</p></details>
+      <details class="faq__item"><summary>Preciso agendar ou posso chegar direto?<i></i></summary><div class="faq__body"><p>O ideal é agendar. Com hora marcada você não espera. Sem agendamento, atendemos por ordem de chegada quando houver horário livre.</p></div></details>
+      <details class="faq__item"><summary>Como funciona o carrinho do site?<i></i></summary><div class="faq__body"><p>Você escolhe os serviços, o dia e o horário, e o site monta uma mensagem pronta no WhatsApp. Nada é cobrado pelo site: o pagamento é feito na barbearia.</p></div></details>
+      <details class="faq__item"><summary>Vocês atendem crianças?<i></i></summary><div class="faq__body"><p>Sim. Atendemos adultos e crianças, e o Combo Pai e Filho atende os dois ao mesmo tempo.</p></div></details>
+      <details class="faq__item"><summary>E se eu precisar remarcar?<i></i></summary><div class="faq__body"><p>Sem problema. Avise pelo WhatsApp com antecedência e encaixamos você em outro horário.</p></div></details>
+      <details class="faq__item"><summary>Quais formas de pagamento?<i></i></summary><div class="faq__body"><p>Pix, cartão de crédito, débito e dinheiro.</p></div></details>
     </div>
   </div>
 </section>
 
 <!-- ============ CTA FINAL ============ -->
 <section class="final-cta">
-  <a class="final-cta__link js-wa" data-wa="geral" href="#" target="_blank" rel="noopener" data-cursor="Bora">
+  <a class="final-cta__link" href="#servicos">
     <span class="final-cta__small">Pronto para o próximo corte?</span>
-    <span class="final-cta__big"><span class="final-cta__line">Fale com a</span><span class="final-cta__line final-cta__line--outline">Bravos agora</span></span>
-    <span class="final-cta__phone js-phone"></span>
+    <span class="final-cta__big"><span class="final-cta__line">Bora ficar</span><span class="final-cta__line final-cta__line--outline">na régua.</span></span>
+    <span class="final-cta__go">Montar meu horário →</span>
   </a>
 </section>
 
@@ -414,19 +373,19 @@
 <!-- ============ FOOTER ============ -->
 <footer class="footer">
   <div class="container footer__cols">
-    <div><span class="footer__label">Local</span><p class="js-city"></p></div>
-    <div><span class="footer__label">Atendimento</span><p>Só com hora marcada</p><p class="js-phone"></p></div>
+    <div><span class="footer__label">Endereço</span><p class="js-address"></p><p class="js-city"></p></div>
+    <div><span class="footer__label">Contato</span><p class="js-phone"></p><p>Atendimento com hora marcada</p></div>
     <div><span class="footer__label">Navegar</span>
-      <a href="#inicio">Início</a><a href="#servicos">Serviços</a><a href="#planos">Planos</a><a href="#agenda">Agenda</a>
+      <a href="#servicos">Serviços e preços</a><a href="#avaliacoes">Avaliações</a><a href="#agenda">Agenda</a>
     </div>
   </div>
   <div class="container footer__bottom">
     <div>
-      <div class="footer__logo">Bravos</div>
+      <div class="footer__logo">BRAVOS</div>
       <p class="footer__copy">© <span id="year"></span> Bravos Barbearia. Todos os direitos reservados.</p>
     </div>
-    <a href="#inicio" class="to-top magnetic" data-cursor="Topo" aria-label="Voltar ao topo">
-      <svg viewBox="0 0 120 120"><defs><path id="topCircle" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"/></defs>
+    <a href="#inicio" class="to-top magnetic" aria-label="Voltar ao topo">
+      <svg viewBox="0 0 120 120" aria-hidden="true"><defs><path id="topCircle" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"/></defs>
         <text><textPath href="#topCircle">VOLTAR AO TOPO · VOLTAR AO TOPO · </textPath></text></svg>
       <span>↑</span>
     </a>
@@ -434,15 +393,34 @@
   <div class="footer__giant" aria-hidden="true">BRAVOS</div>
 </footer>
 
-<!-- WhatsApp flutuante -->
-<a class="wa-float js-wa" data-wa="geral" href="#" target="_blank" rel="noopener" aria-label="Falar no WhatsApp" data-cursor="Chamar">
-  <svg viewBox="0 0 32 32"><path d="M16 3C9 3 3.4 8.6 3.4 15.6c0 2.4.7 4.7 1.9 6.7L3.3 29l6.9-1.8c1.9 1 4 1.6 6.2 1.6 7 0 12.6-5.6 12.6-12.6S23 3 16 3zm0 23.1c-2 0-3.9-.5-5.5-1.5l-.4-.2-4.1 1.1 1.1-4-.3-.4c-1.1-1.7-1.7-3.6-1.7-5.6C5.1 9.6 10 4.8 16 4.8s10.9 4.8 10.9 10.8S22 26.1 16 26.1zm6-8.1c-.3-.2-1.9-1-2.2-1.1-.3-.1-.5-.2-.7.2-.2.3-.8 1.1-1 1.3-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.2-.2-.3 0-.5.1-.7l.5-.6c.2-.2.2-.3.3-.6.1-.2.1-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.2-1.2 2.9s1.2 3.4 1.4 3.6c.2.2 2.4 3.7 5.9 5.2.8.4 1.5.6 2 .7.8.3 1.6.2 2.2.1.7-.1 1.9-.8 2.2-1.5.3-.8.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z"/></svg>
-  <span class="wa-float__pulse"></span>
+<!-- ============ CARRINHO ============ -->
+<div class="drawer-backdrop" id="drawerBackdrop"></div>
+<aside class="drawer" id="cartDrawer" aria-hidden="true" aria-label="Carrinho">
+  <div class="drawer__head">
+    <h3>Seu pedido</h3>
+    <button class="drawer__close" id="drawerClose" aria-label="Fechar carrinho">×</button>
+  </div>
+  <ul class="order order--drawer" id="drawerList"></ul>
+  <div class="drawer__foot">
+    <div class="order__total" id="drawerTotal"></div>
+    <a href="#agenda" class="btn btn--red btn--block" id="drawerGo"><span class="btn__label">Escolher dia e horário</span></a>
+  </div>
+</aside>
+
+<!-- barra do carrinho (celular) -->
+<a href="#agenda" class="cart-bar" id="cartBar" aria-label="Ir para a agenda">
+  <span class="cart-bar__info"><b id="cartBarCount">0 itens</b><small id="cartBarTotal">R$ 0</small></span>
+  <span class="cart-bar__go">Escolher horário →</span>
 </a>
 
-<!-- Toast -->
+<!-- WhatsApp -->
+<a class="wa-float js-wa" data-wa="geral" href="#" target="_blank" rel="noopener noreferrer" aria-label="Falar com a Bravos no WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.6a8.2 8.2 0 0 1-12.1 7.2L4 20l1.2-3.7A8.2 8.2 0 1 1 20 11.6Z"/><path class="wa-fill" d="M9.2 8.6c.2-.4.5-.4.7-.4h.5c.2 0 .4 0 .5.4l.7 1.7c.1.2 0 .4-.1.6l-.5.6c.6 1.1 1.5 2 2.6 2.6l.6-.5c.2-.1.4-.2.6-.1l1.7.7c.3.1.4.3.4.5v.5c0 .3-.1.6-.4.8-.6.4-1.4.6-2.1.4a8.4 8.4 0 0 1-5.3-5.3c-.2-.7 0-1.5.4-2.1Z"/></svg>
+</a>
+
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="js/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+<script src="js/main.js" defer></script>
 </body>
 </html>
