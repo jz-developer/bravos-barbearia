@@ -744,7 +744,7 @@ body.cart-bar-on .wa-float{bottom:calc(94px + var(--safe-b))}
 
 /* Street View */
 .sv{position:relative;width:100%;justify-self:end;max-width:620px;border:1px solid var(--line);overflow:hidden;background:#111}
-.sv__tabs{position:absolute;z-index:3;top:12px;left:12px;display:flex;gap:4px;padding:4px;border-radius:6px;background:rgba(10,10,12,.82);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.sv__tabs{display:flex;gap:4px;padding:8px;border-bottom:1px solid var(--line);background:#0f0f11}
 .sv__tab{padding:8px 12px;border-radius:4px;font-weight:600;font-size:13px;color:#cfcfd3;transition:background .25s,color .25s}
 .sv__tab.is-active{background:var(--red);color:#fff}
 .sv__frame{position:relative;aspect-ratio:4/3.4;background:#151517}
